@@ -1,5 +1,6 @@
 <?php
-	define('DB_SERVER', 'localhost');
+   /*define('DB_SERVER', 'localhost');*/
+   define('DB_SERVER', '10.130.14.191'); /*esto pá que se conecte al openshift*/
    define('DB_USERNAME', 'root');
    define('DB_PASSWORD', 'rootroot');
    define('DB_DATABASE', 'pekipet');
