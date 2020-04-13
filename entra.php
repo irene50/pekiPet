@@ -24,11 +24,11 @@ include_once 'header.php';
           <!--Body-->
           <div class="md-form">
             <label for="form-user"><i class="fa fa-user prefix grey-text"></i> Usuario </label>
-            <input type="text" name="user" id="form-user" class="form-control" required>
+            <input type="text" name="user" id="form-user" class="form-control">
           </div>
           <div class="md-form">
             <label for="form-password"> <i class="fa fa-key prefix grey-text"></i> Contraseña </label>
-            <input type="password" name="password" id="form-password" class="form-control" required>
+            <input type="password" name="password" id="form-password" class="form-control">
           </div>
           <a href="./recordar.php">
             <div id="pekipet">Olvidaste tu usuario o contraseña?</div>
