@@ -74,16 +74,30 @@
         </div>
         <!-- Header con sesion -->
         <div class="navbar-nav zonacliente oculto" id="zonacliente">
-        <a href="index.php#tarifas" class="nav-item nav-link active"><i class="fa fa-hand-paper-o" aria-hidden="true"></i> Hola, <?php echo ($_SESSION['user']); ?></a>
+        <a href="./welcome.php" class="nav-item nav-link active"><i class="fa fa-hand-paper-o" aria-hidden="true"></i> Hola, <?php echo ($_SESSION['user']); ?></a>
         <div></div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:3.5px;margin-top:3.5px;">
+                Área cliente
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" style="background-color: firebrick;">
+                <a class="dropdown-item" href="./editarPerfil.php">Editar datos</a>
+                <a class="dropdown-item" href="./cambiarPass.php">Cambiar contraseña</a>
+                <a class="dropdown-item" href="./mascotas.php">Agregar/quitar mascota</a>
+                <a class="dropdown-item" href="./welcome.php">Pedir cita</a>
+                <a class="dropdown-item" href="./consultaCitas.php">Consultar citas</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="./cerrarsesion.php">Cerrar sesión</a>
+            </div>
+        <!--</div>
             <div>
               <a class="btn btn-light btn-icon mr-1" href="./welcome.php" class="nav-item nav-link active"  id="perfil"><i class="fa fa-user" aria-hidden="true"></i> Perfil</a>
             </div>
             <div>
               <a class="btn btn-danger btn-icon" href="./cerrarsesion.php" class="nav-item nav-link active" id="cerrar"><i class="fa fa-power-off" aria-hidden="true" ></i> Cerrar sesión</a>
             </div>
-        </div>
-        <!---->
+        </div>-->
+        
     </div>
 </nav>
 
