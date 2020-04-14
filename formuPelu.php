@@ -64,7 +64,7 @@ include_once 'header.php';
             <input type="text" name="precio" id="formprecio" class="form-control" value="0">
           </div>
           <div class="md-form">
-            <label for="form-fecha">Fecha </label>
+            <label for="form-fecha">Fecha cita </label>
             <input type="text" name="fecha" id="form-fecha" class="form-control" required>
           </div>
           <div class="text-center mt-4">
@@ -97,7 +97,7 @@ include_once 'header.php';
             <br>
             <div>Si no deseas registrarte, siempre puedes pedirnos una cita por teléfono: <br><h4 align="center">91 567 4589</h4> </div>
             <br>
-            <div>No dudes en <a href="prueba3.php#contacto">contactar</a> con nosotros, si estás interesado/a y te resolveremos todas las dudas</div><br>
+            <div>No dudes en <a href="index.php#contacto">contactar</a> con nosotros, si estás interesado/a y te resolveremos todas las dudas</div><br>
         </div>
     </div>
 </section>
@@ -107,3 +107,10 @@ include_once 'header.php';
 <?php
 include_once 'footer.php';
 ?>
+
+<!-- calendario -->
+<script type="text/javascript">
+			$(function() { 
+				$("#form-fecha").datepicker();
+			});
+</script>

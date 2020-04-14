@@ -17,6 +17,7 @@
     <!-- librerias para JQUERY-UI -->
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="includes/js/jquery/jquery.ui.datepicker-es.js"></script>
     <!--font awesome-->
     <link rel="stylesheet" href="includes/font-awesome-4.7.0/css/font-awesome.min.css">
     <!---Alert-->

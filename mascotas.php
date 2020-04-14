@@ -22,12 +22,12 @@ include_once 'header.php';
 
           <!--Body-->
           <div class="md-form">
-            <label for="form-user">Nombre </label>
+            <label for="form-user">Nombre de tu mascota </label>
             <input type="text" name="user" id="form-user" class="form-control">
           </div>
           <div class="md-form">
-            <label for="form-password">Especie </label>
-            <input type="password" name="password" id="form-password" class="form-control">
+            <label for="form-password">Especie (perro, gato, pájaro...) </label>
+            <input type="text" name="password" id="form-password" class="form-control">
           </div>
           <div class="md-form">
             <label for="form-tamano">Tamaño </label>
@@ -42,7 +42,7 @@ include_once 'header.php';
           </div>
             <!--Aqui hay que cargar las mascotas de la BBDD-->
           <div class="md-form">
-            <label for="form-password">Mascota </label>
+            <label for="form-password">Nombre de tu mascota </label>
             <input type="password" name="password" id="form-password" class="form-control">
           </div>
           <div class="text-center mt-4">
