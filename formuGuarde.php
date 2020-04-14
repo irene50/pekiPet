@@ -5,8 +5,6 @@ include_once 'header.php';
 <?php
     if (isset($_SESSION['id'])) {
 ?>
-        <!--<div><h1 class="titulo" align="center">Regístrate</h1></div>
-  Section: Contact v.1-->
 <section class="section pb-5">
 
   <div class="row">
@@ -15,7 +13,7 @@ include_once 'header.php';
     <div class=" col-lg-5 mb-4 formuEntra">
 
       <!--Form with header-->
-      <form name="primero" action="" method = "post">
+      <form name="primero" action="citaGuarde.php" method = "post">
       <div class="card formu">
 
         <div class="card-body ">
@@ -36,7 +34,7 @@ include_once 'header.php';
           </div>
           <div class="md-form">
             <label for="form-tfno">Teléfono </label>
-            <input type="text" name="telefono" id="form-tfno" class="form-control" value="<?php if ($_SESSION['telefono'] !== '0') echo($_SESSION['telefono']); ?>">
+            <input type="text" name="telefono" id="form-tfno" class="form-control" required value="<?php if ($_SESSION['telefono'] !== '0') echo($_SESSION['telefono']); ?>">
           </div>
           <div class="md-form">
             <label for="form-email">Email </label>
@@ -65,8 +63,12 @@ include_once 'header.php';
             <label for="formprecio">Precio estimado en euros</label>
             <input type="text" name="precio" id="formprecio" class="form-control" value="0">
           </div>
+          <div class="md-form">
+            <label for="form-fecha">Fecha </label>
+            <input type="text" name="fecha" id="form-fecha" class="form-control" required>
+          </div>
           <div class="text-center mt-4">
-          <button class="btn btn-light-blue" style="background-color: aquamarine;">Pedir cita</button>
+          <button class="btn btn-light-blue" id="cita" style="background-color: aquamarine;">Pedir cita</button>
           </div>
 
         </div>
@@ -95,7 +97,7 @@ include_once 'header.php';
             <br>
             <div>Si no deseas registrarte, siempre puedes pedirnos una cita por teléfono: <br><h4 align="center">91 567 4589</h4> </div>
             <br>
-            <div>No dudes en <a href="index.php#contacto">contactar</a> con nosotros, si estás interesado/a y te resolveremos todas las dudas</div><br>
+            <div>No dudes en <a href="prueba3.php#contacto">contactar</a> con nosotros, si estás interesado/a y te resolveremos todas las dudas</div><br>
         </div>
     </div>
 </section>
