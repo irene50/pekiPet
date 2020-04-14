@@ -1,6 +1,6 @@
 <?php 
+session_start();
 function comprobar ($n,$ap1,$u,$p,$e,$ap2,$t,$db){
-	//$error=false;
 	$array = array();
 	
 	//usuario
@@ -9,9 +9,6 @@ function comprobar ($n,$ap1,$u,$p,$e,$ap2,$t,$db){
 	if ($result) {
 		$row=mysqli_fetch_assoc($result);
 		$array = $row['usuario'];
-		/*if ((count($row['usuario']))>=1){
-			$error=true;
-		}*/
 	}
 	
 	//email
@@ -20,9 +17,6 @@ function comprobar ($n,$ap1,$u,$p,$e,$ap2,$t,$db){
 	if ($result) {
 		$row=mysqli_fetch_assoc($result);
 		$array = $row['email'];
-		/*if ((count($row['email']))>=1){
-			$error=true;
-		}*/
 	}
 	
 	//telefono
@@ -32,9 +26,6 @@ function comprobar ($n,$ap1,$u,$p,$e,$ap2,$t,$db){
 		if ($result) {
 			$row=mysqli_fetch_assoc($result);
 			$array = $row['telefono'];
-			/*if ((count($row['telefono']))>=1){
-				$error=true;
-			}*/
 		}
 		
 	}
@@ -52,14 +43,7 @@ function comprobar ($n,$ap1,$u,$p,$e,$ap2,$t,$db){
 		$sqll="INSERT INTO admin(usuario,password,id) VALUES ('$u','$p','$id')";
 		$resulttt=mysqli_query($db,$sqll);
 		if($resultt&&$resulttt){
-			//$pag = "entra.php";
-			/*echo "<script>
-				alert('Se ha creado con exito su perfil'); 
-				window.location='entra.php';
-			</script>";*/
-			
 			header('Refresh: 3; URL=./entra.php');
-			//echo "<script>alert('Se ha creado con exito su perfil');</script>";
 			?><script>$.confirm({
 				boxWidth: '30%',
 				useBootstrap: false,
@@ -69,22 +53,9 @@ function comprobar ($n,$ap1,$u,$p,$e,$ap2,$t,$db){
 				content: 'Se ha creado con éxito tu registro.'
 			});
 			</script><?php
-			/*echo '<script language="JavaScript">
-			alert("Se ha creado con exito su perfil");
-			function redireccionar() {
-				setTimeout("location.href='.$pag.'", 5000);
-			}</script>';*/
-			//header('Location: entra.php');
 		}
 	} else {
-		//$pag = "registrate.php";
-		/*echo "<script>
-			alert('Ese usuario, email o telefono ya esta registrado'); 
-			window.location='registrate.php';
-		</script>";*/
-		
 		header('Refresh: 3; URL=./registrate.php');
-		//echo "<script>alert('Ese usuario, email o telefono ya esta registrado');</script>";
 		?><script>$.confirm({
 			boxWidth: '30%',
 			useBootstrap: false,
@@ -94,8 +65,6 @@ function comprobar ($n,$ap1,$u,$p,$e,$ap2,$t,$db){
 			content: 'Ese usuario, email o teléfono ya esta registrado'
 		});
 		</script><?php
-		/*echo '<script language="JavaScript">alert("Ese usuario, email o telefono ya esta registrado");function redireccionar(){setTimeout("location.href='.$pag.'", 5000);}</script>';*/
-		//header('Location: registrate.php');
 	}
 }
 function loguear($u,$p,$db){
@@ -120,9 +89,7 @@ function loguear($u,$p,$db){
 		 $x=true;
       }else {
 		$x=false;
-		//echo "<p color='red'>Your Login Name or Password is invalid<p>";
 		header('Refresh: 3; URL=./entra.php');
-		//echo "<script>alert('Login no válido','Tu usuario o contraseña son incorrectos','Volver');</script>";
 		?><script>$.confirm({
 			boxWidth: '30%',
 			useBootstrap: false,
@@ -132,14 +99,60 @@ function loguear($u,$p,$db){
 			content: 'Tu usuario o contraseña son incorrectos'
 		});
 		</script><?php
-		/*echo "<script>$.confirm({
-			icon: 'fa fa-spinner fa-spin',
-			title: 'Working!',
-			content: 'Sit back, we are processing your request!'
-		});
-		</script>";*/
       }
-	  return $x;
-	  
+	  return $x;  
+}
+function crearCita($db,$m,$servicio,$p){
+	//No valido la mascota por que enteoria sale de la base de datos
+	$tipo=array("cortar","limpiar","dias","horas");
+	$idPropietario=$_SESSION['id'];
+	$sql="SELECT idAnimal from animal where id='$idPropietario' and nombre='$m'";
+	$result=mysqli_query($db,$sql);
+	//No compruebo result por que el nombre se saca de la base de datos, es decir, que va a estar si o si
+	$row=mysqli_fetch_assoc($result);
+	$idAnimal=$row['idAnimal'];
+	$fecha=date('Y-m-d H:i');
+	if ($servicio ==! 0) {
+		$cita=$tipo[$servicio-1];
+		//El campo tamano lo dejo por si en algun momento lo validamos mas a fondo
+		//Ahora que tenemos toda la informacion vamos a hacer la cita;
+		$sq="INSERT INTO cita (idAnimal,tipo,fecha,precio) VALUES ('$idAnimal','$cita','$fecha','$p')";
+		$resul=mysqli_query($db,$sq);
+		//Insertar alerta de que se ha pedido su cita y volver al principio
+		if ($resul == 1) {
+			header('Refresh: 3; URL=./welcome.php');
+			?><script>$.confirm({
+				boxWidth: '30%',
+				useBootstrap: false,
+				theme: 'dark',
+				icon: 'fa fa-paw',
+				title: 'Cita pedida!',
+				content: 'Tu cita ha sido reservada'
+			});
+			</script><?php
+		} else {
+			header('Refresh: 3; URL=./welcome.php');
+			?><script>$.confirm({
+				boxWidth: '30%',
+				useBootstrap: false,
+				theme: 'dark',
+				icon: 'fa fa-paw',
+				title: 'Fallo al reservar',
+				content: 'No hemos podido reservar la cita, inténtelo de nuevo más tarde'
+			});
+			</script><?php
+		}
+	} else {
+		header('Refresh: 3; URL=./welcome.php');
+		?><script>$.confirm({
+			boxWidth: '30%',
+			useBootstrap: false,
+			theme: 'dark',
+			icon: 'fa fa-paw',
+			title: 'Fallo al reservar',
+			content: 'No ha escogido ningun servicio'
+		});
+		</script><?php
+	}
 }
 ?>

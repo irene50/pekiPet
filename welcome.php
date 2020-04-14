@@ -3,19 +3,20 @@ include_once 'header.php';
 ?>
 
 <section>
-        <!--boton editar-->
+        <!--boton editar
         <div class="btn-group">
             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:3.5px;margin-top:3.5px;">
                 Editar perfil
             </button>
             <div class="dropdown-menu" style="background-color: firebrick;">
-                <a class="dropdown-item" href="#">pon lo que quieras</a>
-                <a class="dropdown-item" href="#">pon lo que quieras</a>
-                <a class="dropdown-item" href="#">pon lo que quieras</a>
+                <a class="dropdown-item" href="#">Editar perfil</a>
+                <a class="dropdown-item" href="#">Cambiar contraseña</a>
+                <a class="dropdown-item" href="#">Agregar/quitar mascota</a>
+                <a class="dropdown-item" href="#">Consultar citas</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Cerrar sesión</a>
+                <a class="dropdown-item" href="./cerrarsesion.php">Cerrar sesión</a>
             </div>
-        </div>
+        </div>-->
         <!-- -->
         <div id="welcome">
             <h2>Bienvenido <?php echo ($_SESSION['user']); ?> </h2>
