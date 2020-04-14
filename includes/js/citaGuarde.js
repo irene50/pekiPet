@@ -1,8 +1,9 @@
 window.onload = function() {
-    document.primero.nombre.readOnly = true;
-    document.primero.apellidos.readOnly = true;
-    document.primero.email.readOnly = true;
+    //document.primero.nombre.readOnly = true;
+    //document.primero.apellidos.readOnly = true;
+    //document.primero.email.readOnly = true;
     document.primero.precio.readOnly = true;
+    //document.primero.onsubmit = enviar;
 }
 
 if (document.addEventListener) {
@@ -19,11 +20,13 @@ function iniciar() {
         document.getElementById('form-tiempo').addEventListener('change', citas);
         document.getElementById('formtiempo2').addEventListener('change', precio);
         document.getElementById('form-tiempo').addEventListener('change', precio2);
+        document.getElementById('cita').addEventListener('submit', enviar);
         
 	} else if (document.attachEvent) {
         document.getElementById('form-tiempo').attachEvent('onchange', citas);
         document.getElementById('formtiempo2').attachEvent('onchange', precio);
         document.getElementById('form-tiempo').attachEvent('onchange', precio2);
+        document.getElementById('cita').attachEvent('onsubmit', enviar);
 	}
 }
 
@@ -88,4 +91,43 @@ function precio2() {
     }
     
     
+}
+
+function enviar() {
+    var vblEnviar = true;
+    var vNombre = document.primero.nombre.value.trim();
+    var vApellidos = document.primero.apellidos.value.trim();
+    var vEmail = document.primero.email.value.trim();
+    var vTelefono = document.primero.telefono.value.trim();
+    
+    var verNombre = /^[a-z]([a-z]|\s|\-)+[a-z]$/i;
+    var verApellidos = /^[a-z]([a-z]|\s|\-)+[a-z]$/i;
+    var verEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.[a-z]{2,4})+$/i;
+    var verTelefono = /^[679]\d{8}$/;
+
+    if (!verNombre.test(vNombre)){
+        vblEnviar = false;
+        document.primero.nombre.value = "";
+		document.primero.nombre.placeholder = "ERROR!";
+		document.primero.nombre.focus();
+	}
+    if (!verApellidos.test(vApellidos)) {
+        vblEnviar = false;
+        document.primero.apellidos.value = "";
+        document.primero.apellidos.placeholder = "ERROR!";
+		document.primero.apellidos.focus();
+    }
+    if (!verEmail.test(vEmail)) {
+        vblEnviar = false;
+        document.primero.email.value = "";
+        document.primero.email.placeholder = "ERROR!";
+		document.primero.email.focus();
+    }
+    if (!verTelefono.test(vTelefono)) {
+        vblEnviar = false;
+        document.primero.telefono.value = "";
+        document.primero.telefono.placeholder = "ERROR!";
+		document.primero.telefono.focus();
+    }
+    return vblEnviar;
 }
