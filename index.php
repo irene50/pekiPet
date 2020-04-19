@@ -152,6 +152,7 @@ include_once 'header.php';
     <div class="col-lg-5 mb-4">
 
       <!--Form with header-->
+    <form action="sendContacto.php" method="POST" name="contacto" id ="contacto">
       <div class="card formu">
 
         <div class="card-body ">
@@ -166,35 +167,36 @@ include_once 'header.php';
           <!--Body-->
           <div class="md-form">
             <label for="form-name"><i class="fa fa-user prefix grey-text"></i> Tu nombre</label>
-            <input type="text" id="form-name" class="form-control">
+            <input type="text" id="form-name" name="form-name" class="form-control">
             
           </div>
 
           <div class="md-form">
             <label for="form-email"><i class="fa fa-envelope prefix grey-text"></i> Tu email</label>
-            <input type="text" id="form-email" class="form-control">
+            <input type="email" id="form-email" name="form-email" class="form-control">
             
           </div>
 
           <div class="md-form">
             <label for="form-Subject"><i class="fa fa-tag prefix grey-text"></i> Asunto</label>
-            <input type="text" id="form-Subject" class="form-control">
+            <input type="text" id="form-Subject" name="form-Subject" class="form-control">
             
           </div>
 
           <div class="md-form">
             <label for="form-text"><i class="fa fa-pencil prefix grey-text"></i> Comentario</label>
-            <textarea id="form-text" class="form-control md-textarea" rows="3"></textarea>
+            <textarea id="form-text" name="form-text" class="form-control md-textarea" rows="3"></textarea>
             
           </div>
 
           <div class="text-center mt-4">
-            <button class="btn btn-light-blue" style="background-color: cadetblue;">Enviar</button>
+            <input type="submit" class="btn btn-light-blue" style="background-color: cadetblue;">
           </div>
 
         </div>
 
       </div>
+    </form>
       <!--Form with header-->
 
     </div>
@@ -226,7 +228,7 @@ include_once 'header.php';
 
         <div class="col-md-4 contactIcon">
           <a class="btn-floating blue accent-1"><img src="includes/imagenes/email.png" height="38pt" width="38pt"></a>
-          <p>pekipetguarderiacanina@gmail.com</p>
+          <p><a href="mailto:pekipetguarderiacanina@gmail.com" style="color:black;">pekipetguarderiacanina@gmail.com</a></p>
         </div>
       </div>
 
