@@ -86,7 +86,7 @@ include_once 'header.php';
       </div>
     </div>
   </div>
-  <div class="col-md-4 precios">
+  <div class="col-md-5 precios">
     <h3 align="center">Tarifas peluquería</h3>
     <div class="back">
       <div class="row">
@@ -173,7 +173,7 @@ include_once 'header.php';
 
           <div class="md-form">
             <label for="form-email"><i class="fa fa-envelope prefix grey-text"></i> Tu email</label>
-            <input type="email" id="form-email" name="form-email" class="form-control">
+            <input type="email" id="form-email" name="form-email" required class="form-control">
             
           </div>
 

@@ -67,6 +67,37 @@ include_once 'header.php';
             <label for="form-fecha">Fecha entrada </label>
             <input type="text" name="fecha" id="form-fecha" class="form-control" required>
           </div>
+          <div class="md-form">
+            <label for="form-hora">Hora entrada </label>
+            <input type="text" name="hora" id="form-hora" class="form-control" required>
+          </div>
+          <div class="md-form">
+            <label for="form-hora">Hora entrada </label>
+            <div class="row">
+              <div class="col-6">
+                <select name="hora" id="hora" class="form-control">
+                  <option value="0">8</option>
+                  <option value="1">9</option>
+                  <option value="2">10</option>
+                  <option value="3">11</option>
+                  <option value="4">12</option>
+                  <option value="5">13</option>
+                  <option value="6">14</option>
+                  <option value="7">15</option>
+                  <option value="8">16</option>
+                  <option value="9">17</option>
+                  <option value="10">18</option>
+                  <option value="11">19</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <select name="minutos" id="minutos" class="form-control">
+                  <option value="0">00</option>
+                  <option value="1">30</option>
+                </select>
+              </div>
+            </div>
+          </div>
           <div class="text-center mt-4">
           <button class="btn btn-light-blue" id="cita" style="background-color: aquamarine;">Pedir cita</button>
           </div>
