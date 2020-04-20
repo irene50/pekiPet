@@ -13,7 +13,7 @@ include_once 'header.php';
     <div class=" col-lg-5 mb-4 formuEntra">
 
       <!--Form with header-->
-      <form name="primero" action="" method = "post">
+      <form name="primero" action="edit.php" method = "post">
       <div class="card formu">
 
         <div class="card-body ">

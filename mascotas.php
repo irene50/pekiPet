@@ -1,5 +1,10 @@
 <?php
 include_once 'header.php';
+include_once 'db.php';      
+include_once 'funciones.php';
+	if (!isset($_POST)||empty($_POST)){
+		$id=$_SESSION['id'];
+		$mascotas=getMascotas($db,$id);
 ?>
 
 <section class="section pb-5">
@@ -43,7 +48,11 @@ include_once 'header.php';
             <!--Aqui hay que cargar las mascotas de la BBDD-->
           <div class="md-form">
             <label for="form-mascota">Nombre de tu mascota </label>
-            <input type="text" name="mascota" id="form-mascota" class="form-control">
+            <select name="mascota" id="form-mascota" class="form-control" required>
+				<?php foreach ($mascotas as $mascota) : ?>
+					<?php echo '<option>'. $mascota['nombre'] . '</option>'; ?>
+				<?php endforEach; ?>
+			</select>
           </div>
           <div class="text-center mt-4">
           <input type="submit" name="quitar" class="btn btn-light-blue" style="background-color: red;" value="Quitar mascota"/>
@@ -60,5 +69,6 @@ include_once 'header.php';
   </section>
 
 <?php
+	}
 include_once 'footer.php';
 ?>

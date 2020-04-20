@@ -1,5 +1,8 @@
 <?php
 include_once 'header.php';
+include_once 'db.php';      
+include_once 'funciones.php';
+$id=$_SESSION['id'];
 ?>
 
 <script src="includes/js/validaciones.js"></script>
@@ -20,6 +23,9 @@ include_once 'header.php';
           <!--Header-->
           <div class="form-header blue accent-1">
             <h3 align="center"><i class="fa fa-paw"></i> Consultar citas: <i class="fa fa-paw"></i></h3>
+			
+				<?php mostrarCitas($db,$id);?>
+			
           </div>
           <br>
 

@@ -1,9 +1,14 @@
 <?php
 include_once 'header.php';
+include_once 'db.php';      
+include_once 'funciones.php';
 ?>
 <script src="includes/js/citaGuarde.js"></script>
 <?php
     if (isset($_SESSION['id'])) {
+		if (!isset($_POST)||empty($_POST)){
+		$id=$_SESSION['id'];
+		$mascotas=getMascotas($db,$id);
 ?>
 <section class="section pb-5">
 
@@ -43,7 +48,11 @@ include_once 'header.php';
           <!--Esto terminaria siendo un desplegable con las mascotas del cliente-->
           <div class="md-form">
             <label for="form-mascota">Mascota </label>
-            <input type="text" name="mascota" id="form-mascota" class="form-control" required>
+			<select name="mascota" id="form-mascota" class="form-control" required>
+				<?php foreach ($mascotas as $mascota) : ?>
+					<?php echo '<option>'. $mascota['nombre'] . '</option>'; ?>
+				<?php endforEach; ?>
+			</select>
           </div>
           <div class="md-form">
             <label for="form-tiempo">Selecciona la duración </label>
@@ -81,6 +90,7 @@ include_once 'header.php';
   </div>
   </section>
 <?php
+		}
     } else {
 ?>
 
