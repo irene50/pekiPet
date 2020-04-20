@@ -225,6 +225,9 @@ div.social > ul li img{
     .tarifas{
         display:flex;
     }
+    .back{
+        width: 21em;  
+     }
 }
 @media (min-width: 997px){
     .formu{
@@ -259,6 +262,9 @@ div.social > ul li img{
     .formuEntra {
         margin-left: 24%;
     }
+    .back{
+        width: 25em;  
+     }
 }
 @media (min-width: 1000px) {
     .central a{
@@ -310,6 +316,9 @@ div.social > ul li img{
         margin-left: -28px;
         margin-top: 17px;
     }
+    .back{
+        width: 28em;  
+     }
 }
 @media (min-width: 1336px) {
     .central a{
@@ -369,5 +378,8 @@ div.social > ul li img{
         position: relative;
         height: 0;
     }
+    .back{
+        width: 31em;  
+     }
    
 } 
