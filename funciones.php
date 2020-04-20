@@ -155,4 +155,16 @@ function crearCita($db,$m,$servicio,$p){
 		</script><?php
 	}
 }
+
+function mandarMensaje($m,$db){
+	$result = mysqli_query($db,"SELECT email from cliente WHERE email='$m'");
+	if ($result){
+		$sql = "SELECT password, usuario FROM admin, cliente WHERE cliente.email = '$m' and cliente.id = admin.id";
+		$resultt=mysqli_query($db,$sql);
+		$password = mysqli_fetch_assoc($resultt);
+		/*$password=$row['password'];
+		$usuario=$row['usuario'];*/
+	}else $password=0;
+	return $password;
+}
 ?>
