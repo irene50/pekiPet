@@ -1,8 +1,8 @@
 <footer id="piePagina">
   <h3 id="siguenos">Síguenos o contáctanos en:</h3>
   <!-- Footer Elements -->
-  <div class="social">
-    <!-- Social buttons -->
+  <!--<div class="social">
+     Social buttons 
     <ul>
       <li>
         <a href=""><img src="includes/imagenes/facebook.png" ></a>
@@ -13,10 +13,42 @@
       <li>
         <a href=""><img src="includes/imagenes/twiter.png" ></a>
       </li>
-    </ul>
-    <!-- Social buttons -->
-  </div>
+    </ul>-->
+    <!-- Social buttons 
+  </div>-->
   <!-- Footer Elements -->
+  <div class="social2">
+    <ul>
+      <li>
+        <a href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span class="fa fa-facebook" aria-hidden="true"></span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span class="fa fa-instagram" aria-hidden="true"></span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span class="fa fa-twitter" aria-hidden="true"></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
 
   <!-- Copyright -->
   <div id="copy" class="mr-2">

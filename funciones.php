@@ -113,7 +113,7 @@ function crearCita($db,$m,$servicio,$p,$fecha,$id){
 	$row=mysqli_fetch_assoc($result);
 	$idAnimal=$row['idAnimal'];
 	$cita=$tipo[$servicio-1];
-	var_dump($cita);
+	//var_dump($cita);
 	$arrayFecha=explode('/',$fecha);
 	$nFecha=$arrayFecha[2]."-".$arrayFecha[1]."-".$arrayFecha[0];
 	$fechaFinal=date("Y-m-d",strtotime($nFecha));
@@ -188,8 +188,8 @@ function getMascotas($db,$id){
 		while($row = mysqli_fetch_assoc($result)){
 			$animales[]=$row;
 		}
+		return $animales;
 	}
-	return $animales;
 }
 //Mostrar citas
 function mostrarCitas($db,$id){
@@ -221,17 +221,21 @@ function mostrarCitas($db,$id){
 	<table border='1'>
 	<tr><td>Nombre</td> <td>Servicio</td> <td>Fecha</td> <td>Precio</td></tr>";
 	foreach($mascotas as $l => $valor){
-		
+
 	echo "<tr><td>".$valor."</td> <td>".$servicio[$l]."</td> <td>".$fecha[$l]."</td> <td>".$precio[$l].	"</td></tr>";	
 	}
 	echo "</table>";
 }
 
-
-
-
-
-
-
-
+function mandarMensaje($m,$db){
+	$result = mysqli_query($db,"SELECT email from cliente WHERE email='$m'");
+	if ($result){
+		$sql = "SELECT password, usuario FROM admin, cliente WHERE cliente.email = '$m' and cliente.id = admin.id";
+		$resultt=mysqli_query($db,$sql);
+		$password = mysqli_fetch_assoc($resultt);
+		/*$password=$row['password'];
+		$usuario=$row['usuario'];*/
+	}else $password=0;
+	return $password;
+}
 ?>

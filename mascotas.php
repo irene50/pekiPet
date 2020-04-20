@@ -46,6 +46,8 @@ include_once 'funciones.php';
          <input type="submit" name="agregar" class="btn btn-light-blue" style="background-color: aquamarine;" value="Agregar mascota"/>
           </div>
             <!--Aqui hay que cargar las mascotas de la BBDD-->
+            </form>
+            <form name="segundo" action="./cambiarMascota.php" method = "post">
           <div class="md-form">
             <label for="form-mascota">Nombre de tu mascota </label>
             <select name="mascota" id="form-mascota" class="form-control" required>
@@ -69,6 +71,6 @@ include_once 'funciones.php';
   </section>
 
 <?php
-	}
+  }
 include_once 'footer.php';
 ?>
