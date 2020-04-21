@@ -5,7 +5,7 @@
    define('DB_DATABASE', 'pekipet');*/
 
    /*esto pá que se conecte al openshift*/
-   define('DB_SERVER', '10.130.14.191:3306');/*10.130.14.191*/
+   define('DB_SERVER', '10.130.24.13:3306');/*10.130.14.191*/
    define('DB_USERNAME', 'pekipet');
    define('DB_PASSWORD', 'pekipet');
    define('DB_DATABASE', 'pekipetdb');
