@@ -10,7 +10,7 @@ include_once 'header.php';
     <div class=" col-lg-5 mb-4 formuEntra">
 
       <!--Form with header-->
-      <form name="primero" action="sendContrasenia.php" method = "POST">
+      <form name="primero" action="newPass.php" method = "post">
       <div class="card formu">
 
         <div class="card-body ">
@@ -33,12 +33,8 @@ include_once 'header.php';
             <label for="form-nueva2">Repita la contraseña </label>
             <input type="password" name="nueva2" id="form-nueva2" class="form-control" required>
           </div>
-          <div class="md-form">
-            <label for="form-nueva2">Tu correo para enviar la nueva contraseña </label>
-            <input type="email" name="correoCliente" id="form-correo" class="form-control" required>
-          </div>
           <div class="text-center mt-4">
-            <button type="submit" name="cambiar" class="btn btn-light-blue" style="background-color: aquamarine;">Cambiar contraseña</button>
+            <button name="cambiar" class="btn btn-light-blue" style="background-color: aquamarine;">Cambiar contraseña</button>
           </div>
         </div>
 

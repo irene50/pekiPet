@@ -3,15 +3,51 @@
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <?php
+session_start();
 	include_once 'db.php';      
 	include_once 'funciones.php';
 	$m=$_POST['mascota'];
 	$servicio=$_POST['tiempo'];
-	if ($servicio != 0) {
-		$servicio+=2;
-	}
 	$p=$_POST['precio'];
-	crearCita($db,$m,$servicio,$p);
-	//Añadir alert
-	//header('Refresh: 3; URL=./prueba3.php');
+	$fecha=$_POST['fecha'];
+	$id=$_SESSION['id'];
+	
+	//Insertar alerta de que se ha pedido su cita y volver al 
+	if ($servicio ==! 0) {
+		$servicio+=2;
+		if (crearCita($db,$m,$servicio,$p,$fecha,$id)) {
+			header('Refresh: 3; URL=./welcome.php');
+			?><script>$.confirm({
+				boxWidth: '30%',
+				useBootstrap: false,
+				theme: 'dark',
+				icon: 'fa fa-paw',
+				title: 'Cita pedida!',
+				content: 'Tu cita ha sido reservada'
+			});
+			</script><?php
+		} else {
+			header('Refresh: 3; URL=./welcome.php');
+			?><script>$.confirm({
+				boxWidth: '30%',
+				useBootstrap: false,
+				theme: 'dark',
+				icon: 'fa fa-paw',
+				title: 'Fallo al reservar',
+				content: 'No hemos podido reservar la cita, inténtelo de nuevo más tarde'
+			});
+			</script><?php
+		}
+	} else {
+		header('Refresh: 3; URL=./welcome.php');
+		?><script>$.confirm({
+			boxWidth: '30%',
+			useBootstrap: false,
+			theme: 'dark',
+			icon: 'fa fa-paw',
+			title: 'Fallo al reservar',
+			content: 'No ha escogido ningun servicio'
+		});
+		</script><?php
+	} 
 ?>
