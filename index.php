@@ -11,19 +11,19 @@ include_once 'header.php';
     </div>
   </li>
   <li>
-    <a href="indexInfoGuarde.php" target="_blank"><img src="includes/imagenes/guarderia2(1).jpg" alt="image2"/></a>
+    <a href="indexInfoGuarde.php" target="_blank"><img src="includes/imagenes/2.jpg" alt="image2"/></a>
     <div class="sb-description">
       <h3>Estarán encantados!</h3>
     </div>
   </li>
   <li>
-    <a href="indexInfoGuarde.php" target="_blank"><img src="includes/imagenes/pelu1_710x442.jpg" alt="image3"/></a>
+    <a href="indexInfoGuarde.php" target="_blank"><img src="includes/imagenes/3.jpg" alt="image3"/></a>
     <div class="sb-description">
       <h3>En Peki-Pet estarán en buenas manos</h3>
     </div>
   </li>
   <li>
-    <a href="indexInfoGuarde.php" target="_blank"><img src="includes/imagenes/pelu2.jpg" alt="image4"/></a>
+    <a href="indexInfoGuarde.php" target="_blank"><img src="includes/imagenes/4.jpg" alt="image4"/></a>
     <div class="sb-description">
       <h3>Lucirán fabulosos!</h3>
     </div>
