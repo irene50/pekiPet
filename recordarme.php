@@ -47,7 +47,7 @@ $password=mandarMensaje($m,$db);
 			// $emailCliente->SMTPDebug = 1;
 			$emailCliente->SMTPSecure = 'ssl';
 			$emailCliente->Host = "smtp.gmail.com"; // GMail
-			$emailCliente->SMTPDebug = 4; 
+			//$emailCliente->SMTPDebug = 4; 
 			$emailCliente->Port = 465;
 			$emailCliente->IsSMTP(); // use SMTP
 			$emailCliente->SMTPAuth = true;
@@ -64,7 +64,16 @@ $password=mandarMensaje($m,$db);
 			$emailCliente->IsHTML(true);
 			$emailCliente->Send();
 
-			header('location:recordar.php');
+			header('Refresh: 3; URL=./recordar.php');
+			?><script>$.confirm({
+				boxWidth: '30%',
+				useBootstrap: false,
+				theme: 'dark',
+				icon: 'fa fa-paw',
+				title: 'Email enviado',
+				content: 'Hemos mandado tus datos por correo. Revíselo por favor.'
+			});
+			</script><?php
 		} else {
 			header('Refresh: 3; URL=./recordar.php');
 			?><script>$.confirm({
