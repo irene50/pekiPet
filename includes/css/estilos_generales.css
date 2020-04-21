@@ -17,6 +17,14 @@ header{
      width:40%;
      margin-top: -2.5%;
 }
+/*slicebox*/
+.wrapper {
+	position: relative;
+	max-width: 840px;
+	width: 100%;
+	padding: 0 50px;
+	margin: 0 auto;
+}
 /*menu*/
 .navbar-brand {
     max-width: 70%;
@@ -67,13 +75,88 @@ footer{
     width: 100%;
 }
 
-footer ul{
+/*footer ul{
     list-style:none;
     text-align: center; 
 }
 footer ul li{
     display:inline;
     padding: 1.5%;
+}*/
+
+.social2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer ul {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+footer ul li{
+    position: relative;
+    list-style: none;
+    width: 60px;
+    height: 60px;
+    margin: 0 30px;
+    transform: rotate(-30deg) skew(25deg);
+    background: rgb(50, 56, 58);
+}
+
+footer ul li span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    transition: 0.5s;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 30px !important;
+}
+
+footer ul li:hover span:nth-child(5) {
+    transform: translate(40px, -40px);
+    opacity: 1;
+}
+
+footer ul li:hover span:nth-child(4) {
+    transform: translate(30px, -30px);
+    opacity: 0.8;
+}
+
+footer ul li:hover span:nth-child(3) {
+    transform: translate(20px, -20px);
+    opacity: 0.6;
+}
+
+footer ul li:hover span:nth-child(2) {
+    transform: translate(10px, -10px);
+    opacity: 0.4;
+}
+
+footer ul li:hover span:nth-child(1) {
+    transform: translate(0, 0);
+    opacity: 0.2;
+}
+
+footer ul li:nth-child(1) span{
+    background: #3b5999;
+}
+
+footer ul li:nth-child(2) span{
+    background: #e4405f;
+}
+
+footer ul li:nth-child(3) span{
+    background: #55acee;
 }
 
 div#copy div{
@@ -225,6 +308,9 @@ div.social > ul li img{
     .tarifas{
         display:flex;
     }
+    .back{
+        width: 21em;  
+     }
 }
 @media (min-width: 997px){
     .formu{
@@ -259,6 +345,9 @@ div.social > ul li img{
     .formuEntra {
         margin-left: 24%;
     }
+    .back{
+        width: 25em;  
+     }
 }
 @media (min-width: 1000px) {
     .central a{
@@ -310,6 +399,9 @@ div.social > ul li img{
         margin-left: -28px;
         margin-top: 17px;
     }
+    .back{
+        width: 28em;  
+     }
 }
 @media (min-width: 1336px) {
     .central a{
@@ -369,5 +461,8 @@ div.social > ul li img{
         position: relative;
         height: 0;
     }
+    .back{
+        width: 31em;  
+     }
    
 } 

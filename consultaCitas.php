@@ -23,9 +23,7 @@ $id=$_SESSION['id'];
           <!--Header-->
           <div class="form-header blue accent-1">
             <h3 align="center"><i class="fa fa-paw"></i> Consultar citas: <i class="fa fa-paw"></i></h3>
-			
-				<?php mostrarCitas($db,$id);?>
-			
+            <?php mostrarCitas($db,$id);?>
           </div>
           <br>
 

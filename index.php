@@ -1,7 +1,55 @@
 <?php
 include_once 'header.php';
 ?>
+<div class="wrapper">
 
+<ul id="sb-slider" class="sb-slider">
+  <li>
+    <a href="indexInfoGuarde.php" target="_blank"><img src="includes/imagenes/guarderia1.jpg" alt="image1"/></a>
+    <div class="sb-description">
+      <h3>Cuidamos a tus animales</h3>
+    </div>
+  </li>
+  <li>
+    <a href="indexInfoGuarde.php" target="_blank"><img src="includes/imagenes/2.jpg" alt="image2"/></a>
+    <div class="sb-description">
+      <h3>Estarán encantados!</h3>
+    </div>
+  </li>
+  <li>
+    <a href="indexInfoGuarde.php" target="_blank"><img src="includes/imagenes/3.jpg" alt="image3"/></a>
+    <div class="sb-description">
+      <h3>En Peki-Pet estarán en buenas manos</h3>
+    </div>
+  </li>
+  <li>
+    <a href="indexInfoGuarde.php" target="_blank"><img src="includes/imagenes/4.jpg" alt="image4"/></a>
+    <div class="sb-description">
+      <h3>Lucirán fabulosos!</h3>
+    </div>
+  </li>
+</ul>
+
+<div id="sombra" class="sombra"></div>
+
+<div id="nav-arrows" class="nav-arrows">
+  <a href="#">Next</a>
+  <a href="#">Previous</a>
+</div>
+<!-- Opcion 1 -->
+<div id="nav-dots" class="nav-dots">
+					<span class="nav-dot-current"></span>
+					<span></span>
+					<span></span>
+					<span></span>
+        </div>
+<!-- Opcion 2 -->
+<div id="nav-options" class="nav-options">
+  <span id="navPlay">Play</span>
+  <span id="navPause">Pause</span>
+</div>
+</div><!-- /wrapper -->
+<!-- Flexslider viejo 
 <div class="flexslider" id="slider">
   <ul class="slides">
     <li>
@@ -29,7 +77,7 @@ include_once 'header.php';
       </section>
     </li>
   </ul>
-</div>
+</div>-->
 <div><h1 class="titulo" id="servicios" align="center">Servicios</h1></div>
 <div class="card-deck">
   <div class="card">
@@ -86,7 +134,7 @@ include_once 'header.php';
       </div>
     </div>
   </div>
-  <div class="col-md-4 precios">
+  <div class="col-md-5 precios">
     <h3 align="center">Tarifas peluquería</h3>
     <div class="back">
       <div class="row">
@@ -152,6 +200,7 @@ include_once 'header.php';
     <div class="col-lg-5 mb-4">
 
       <!--Form with header-->
+    <form action="sendContacto.php" method="POST" name="contacto" id ="contacto">
       <div class="card formu">
 
         <div class="card-body ">
@@ -166,35 +215,36 @@ include_once 'header.php';
           <!--Body-->
           <div class="md-form">
             <label for="form-name"><i class="fa fa-user prefix grey-text"></i> Tu nombre</label>
-            <input type="text" id="form-name" class="form-control">
+            <input type="text" id="form-name" name="form-name" class="form-control">
             
           </div>
 
           <div class="md-form">
             <label for="form-email"><i class="fa fa-envelope prefix grey-text"></i> Tu email</label>
-            <input type="text" id="form-email" class="form-control">
+            <input type="email" id="form-email" name="form-email" required class="form-control">
             
           </div>
 
           <div class="md-form">
             <label for="form-Subject"><i class="fa fa-tag prefix grey-text"></i> Asunto</label>
-            <input type="text" id="form-Subject" class="form-control">
+            <input type="text" id="form-Subject" name="form-Subject" class="form-control">
             
           </div>
 
           <div class="md-form">
             <label for="form-text"><i class="fa fa-pencil prefix grey-text"></i> Comentario</label>
-            <textarea id="form-text" class="form-control md-textarea" rows="3"></textarea>
+            <textarea id="form-text" name="form-text" class="form-control md-textarea" rows="3"></textarea>
             
           </div>
 
           <div class="text-center mt-4">
-            <button class="btn btn-light-blue" style="background-color: cadetblue;">Enviar</button>
+            <input type="submit" class="btn btn-light-blue" style="background-color: cadetblue;">
           </div>
 
         </div>
 
       </div>
+    </form>
       <!--Form with header-->
 
     </div>
@@ -221,12 +271,12 @@ include_once 'header.php';
         <div class="col-md-4 contactIcon">
           <a class="btn-floating blue accent-1"><img src="includes/imagenes/phone.png" height="38pt" width="38pt"></i></a>
           <p>+ 34 91 567 4589</p>
-          <p>Lunes - Viernes, 8:00-22:00</p>
+          <p>Lunes - Viernes, 8:00-20:00</p>
         </div>
 
         <div class="col-md-4 contactIcon">
           <a class="btn-floating blue accent-1"><img src="includes/imagenes/email.png" height="38pt" width="38pt"></a>
-          <p>pekipetguarderiacanina@gmail.com</p>
+          <p><a href="mailto:pekipetguarderiacanina@gmail.com" style="color:black;">pekipetguarderiacanina@gmail.com</a></p>
         </div>
       </div>
 
