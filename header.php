@@ -30,9 +30,15 @@
     <link rel="stylesheet" href="includes/css/estilosWelcome.css">
     <link rel="stylesheet" href="includes/css/estilos_generales.css">
     <link rel="stylesheet" href="includes/css/estilosMasInfo.css">
-    
-    <!--carrousel libreria-->
-    <script type="text/javascript" src="includes/js/jquery/jquery.flexslider.js"></script>
+    <!--slicebox-->
+	<link rel="stylesheet" type="text/css" href="includes/css/slicebox.css" />
+	<link rel="stylesheet" type="text/css" href="includes/css/custom.css" />
+    <script type="text/javascript" src="includes/js/modernizr.custom.46884.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="includes/js/jquery/jquery.slicebox.js"></script>
+    <script src="includes/js/slicebox.js"></script>
+    <!--carrousel libreria
+    <script type="text/javascript" src="includes/js/jquery/jquery.flexslider.js"></script>-->
     <!---Estilo tarifas-->
     <style type= "text/css">
         .oculto {

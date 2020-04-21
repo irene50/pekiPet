@@ -60,7 +60,7 @@
 <!-- Footer -->
 
 
-<!--carrousel-->
+<!--carrousel
 <script type = "text/javascript">
   $(window).on("load",function(){
     $('.flexslider').flexslider({
@@ -70,6 +70,6 @@
     });
    });
 
-</script>
+</script>-->
 </body>
 </html>
