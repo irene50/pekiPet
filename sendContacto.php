@@ -30,14 +30,14 @@ $emailPeki->Password = $email_password;
 $emailCliente->SMTPSecure = 'ssl';
 $emailCliente->Host = "smtp.gmail.com"; // GMail
 $emailCliente->Port = 465;
-//$emailCliente->SMTPDebug = 4; 
+$emailCliente->SMTPDebug = 4; 
 $emailCliente->IsSMTP(); // use SMTP
 $emailCliente->SMTPAuth = true;
 
 $emailPeki->SMTPSecure = 'ssl';
 $emailPeki->Host = "smtp.gmail.com"; // GMail
 $emailPeki->Port = 465;
-//$emailPeki->SMTPDebug = 4; 
+$emailPeki->SMTPDebug = 4; 
 $emailPeki->IsSMTP(); // use SMTP
 $emailPeki->SMTPAuth = true;
 

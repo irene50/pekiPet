@@ -141,13 +141,13 @@ include_once 'funciones.php';
 <?php
 }
 ?>
-<?php
-include_once 'footer.php';
-?>
-
 <!-- calendario -->
 <script type="text/javascript">
 			$(function() { 
 				$("#form-fecha").datepicker();
 			});
 </script>
+<?php
+include_once 'footer.php';
+?>
+

@@ -93,6 +93,7 @@
                 <a class="dropdown-item" href="./mascotas.php">Agregar/quitar mascota</a>
                 <a class="dropdown-item" href="./welcome.php">Pedir cita</a>
                 <a class="dropdown-item" href="./consultaCitas.php">Consultar citas</a>
+                <a class="dropdown-item" href="./canjearCupon.php">Codigo de Descuento</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="./cerrarsesion.php">Cerrar sesión</a>
             </div>
