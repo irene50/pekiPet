@@ -1,16 +1,17 @@
 #welcome{
     width:90%;
-    background-color:  rgba(183, 235, 23, 0.50);;
+    background-color:  rgba(183, 235, 23, 0.50);
+    height: 70%;
     margin: 0 auto;
     margin-top: 2.5%;
     margin-bottom: 2.5%;
     border-radius:15px;
 }
 #citaPeluqueria{
-    width: 35%;
+    width: 55%;
 }
 #citaGuarderia{
-    width: 35%;
+    width: 55%;
 }
 .imgWelcome img{
     width: 100%;

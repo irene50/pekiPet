@@ -46,7 +46,8 @@ function enviar() {
     if (!verContrasena.test(vContrasena)) {
         vblEnviar = false;
         document.primero.contrasena.value = "";
-        document.primero.contrasena.placeholder = "Al menos mayuscula, minuscula y digito. Entre 8 y 15.";
+        document.primero.contrasena.placeholder = "ERROR!";
+        alert ("Al menos mayuscula, minuscula y digito. Entre 8 y 15.");
 		document.primero.contrasena.focus();
     }
     if (!verEmail.test(vEmail)) {
