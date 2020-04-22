@@ -7,6 +7,7 @@ body{
 }
 header{
      width: 100%;
+     min-height: 20%;;
      background-image: url("../../includes/imagenes/lad.png");
      background-repeat: repeat;
      display:inline-block;    
@@ -14,8 +15,8 @@ header{
 #logo{
      display:block;
      margin:auto;
-     width:40%;
-     margin-top: -2.5%;
+     width:50%;
+     /*margin-top: -2.5%;*/
 }
 /*slicebox*/
 .wrapper {
@@ -59,8 +60,8 @@ a.dropdown-item{
   margin: auto;
   background-color: #fff;
   color: white;
-  width: 76%;
-  margin-top: 2.5%;
+  width: 84%;
+  margin-top: 4.5%;
 }
 
 /*#servicios{
@@ -240,7 +241,7 @@ div.social > ul li img{
         width:28%;  
     }
     .formu{
-    width: 65%;
+    width: 80%;
     margin: auto;
     margin-top: 2.5%;
     }
@@ -259,6 +260,9 @@ div.social > ul li img{
      }
      div.contactIcon{
         margin-left: -17px;
+    }
+    #welcome{
+        height: auto;
     }
 
     
@@ -311,6 +315,10 @@ div.social > ul li img{
     .back{
         width: 21em;  
      }
+     #welcome{
+        height: auto;
+    }
+
 }
 @media (min-width: 997px){
     .formu{
@@ -348,6 +356,10 @@ div.social > ul li img{
     .back{
         width: 25em;  
      }
+     #welcome{
+        height: auto;
+    }
+
 }
 @media (min-width: 1000px) {
     .central a{
@@ -402,6 +414,10 @@ div.social > ul li img{
     .back{
         width: 28em;  
      }
+     #welcome{
+        height: auto;
+    }
+
 }
 @media (min-width: 1336px) {
     .central a{
@@ -464,5 +480,9 @@ div.social > ul li img{
     .back{
         width: 31em;  
      }
+     #welcome{
+        height: auto;
+    }
+
    
 } 
