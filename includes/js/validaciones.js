@@ -48,12 +48,12 @@ function enviar() {
         document.primero.contrasena.value = "";
         document.primero.contrasena.placeholder = "ERROR!";
         $.confirm({
-			boxWidth: '30%',
+			boxWidth: '50%',
 			useBootstrap: false,
 			theme: 'dark',
 			icon: 'fa fa-paw',
 			title: 'Contraseña no válida!',
-			content: 'La contraseña debe contener al menos mayuscula, minuscula y digito. Entre 8 y 15.'
+			content: 'La contraseña debe contener \nal menos mayus., minus. \ny digito. Entre 8 y 15.'
 		});
         //alert ("La contraseña debe contener al menos mayuscula, minuscula y digito. Entre 8 y 15.");
 		document.primero.contrasena.focus();
