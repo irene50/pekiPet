@@ -1,6 +1,10 @@
 <?php
 include_once 'header.php';
 ?>
+<script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+<link rel="stylesheet" href="includes/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <script src="includes/js/validaciones.js"></script>
 <!--<div><h1 class="titulo" align="center">Regístrate</h1></div>
   Section: Contact v.1-->
@@ -53,7 +57,7 @@ include_once 'header.php';
           </div>
           <div class="md-form">
               <br>
-            <p style="color:red;" align="center">* Los campos con un asterisco son obligatorios</p>
+            <p align="center">* Los campos con un asterisco son obligatorios</p>
           </div>
           <div class="text-center mt-4">
           <button class="btn btn-light-blue" style="background-color: aquamarine;">Regístrate</button>

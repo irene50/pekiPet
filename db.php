@@ -2,10 +2,10 @@
    /*define('DB_SERVER', 'localhost');
    define('DB_USERNAME', 'root');
    define('DB_PASSWORD', 'rootroot');
-   define('DB_DATABASE', 'pekipet');*/
+   define('DB_DATABASE', 'pekipet');
 
-   /*esto pá que se conecte al openshift*/
-   define('DB_SERVER', '10.130.24.13:3306');/*10.130.14.191*/
+   esto pá que se conecte al openshift*/
+   define('DB_SERVER', '10.130.24.13:3306');
    define('DB_USERNAME', 'pekipet');
    define('DB_PASSWORD', 'pekipet');
    define('DB_DATABASE', 'pekipetdb');
