@@ -47,7 +47,7 @@ $password=mandarMensaje($m,$db);
 			// $emailCliente->SMTPDebug = 1;
 			$emailCliente->SMTPSecure = 'ssl';
 			$emailCliente->Host = "smtp.gmail.com"; // GMail
-			//$emailCliente->SMTPDebug = 4; 
+			$emailCliente->SMTPDebug = 4; 
 			$emailCliente->Port = 465;
 			$emailCliente->IsSMTP(); // use SMTP
 			$emailCliente->SMTPAuth = true;
