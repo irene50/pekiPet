@@ -28,15 +28,15 @@ include_once 'funciones.php';
           <!--Body-->
           <div class="md-form">
             <label for="form-nombre">Nombre de tu mascota</label>
-            <input type="text" name="nombre" id="form-nombre" class="form-control">
+            <input type="text" name="nombre" id="form-nombre" class="form-control" required>
           </div>
           <div class="md-form">
             <label for="form-especie">Especie (perro, gato, pájaro,...)</label>
-            <input type="text" name="especie" id="form-especie" class="form-control">
+            <input type="text" name="especie" id="form-especie" class="form-control" required>
           </div>
           <div class="md-form">
             <label for="form-tamano">Tamaño </label>
-            <select name="tamano" id="form-tamano" class="form-control">
+            <select name="tamano" id="form-tamano" class="form-control" required>
                 <option value="0">Pequeño</option>
                 <option value="1">Mediano</option>
                 <option value="2">Grande</option>
