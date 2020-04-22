@@ -1,0 +1,74 @@
+/*guarderia info*/
+#guarde{
+    background-color: rgba(183, 235, 23, 0.50);
+    width: 85%;
+    margin:0 auto;
+    text-align: center;
+    border-radius: 12px;
+    margin-top:25px;
+    margin-bottom:25px;
+    padding:8px;
+    font-size: 10pt;
+}
+#guarde div{
+    text-align: justify;
+}
+
+.imgGuarde{
+    margin-top: 15px;
+}
+.imgGuarde > img{
+   width: 100%;
+   margin-top: 8px;
+   border: 1px dashed white;
+}
+
+/*TABLETS*/
+@media (min-width: 769px) {
+    #guarde{
+        font-size: 11pt;
+    }
+    .imgGuarde{
+        width: 50%;
+        margin: 0 auto;   
+    }
+   
+}
+/*PC*/
+@media (min-width: 940px) {
+    #guarde{
+        font-size: 12pt;
+    }
+    .imgGuarde{
+        width: 50%;
+        margin: 0 auto;   
+    }
+}
+@media (min-width: 997px){
+    #guarde{
+        font-size: 13pt;
+    }
+    .imgGuarde{
+        width: 50%;
+        margin: 0 auto;   
+    }
+}
+@media (min-width: 1000px){
+    #guarde{
+        font-size: 14pt;
+    }
+    .imgGuarde{
+        width: 50%;
+        margin: 0 auto;   
+    }
+}
+@media (min-width: 1336px) {
+    #guarde{
+        width: 75%;
+        font-size: 14pt;
+    }
+    .imgGuarde{
+        width: 60%;
+        margin: 0 auto;   
+    }
+} 

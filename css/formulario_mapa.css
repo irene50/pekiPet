@@ -1,0 +1,25 @@
+
+/*formulario contacto*/
+.formu{
+  width: 65%;
+  margin: auto;
+  margin-top: 2.5%;
+}
+
+/*map*/
+.map-container-6{
+overflow:hidden;
+padding-bottom:56.25%;
+position:relative;
+height:0;
+}
+.map-container-6 iframe{
+left:0;
+top:0;
+height:50%;
+width:64%;
+position:absolute;
+margin:auto;
+margin-top: 1%;
+margin-left: 18%;
+}

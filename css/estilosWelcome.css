@@ -1,0 +1,31 @@
+#welcome{
+    width:90%;
+    background-color:  rgba(183, 235, 23, 0.50);;
+    margin: 0 auto;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    border-radius:15px;
+}
+#citaPeluqueria{
+    width: 35%;
+}
+#citaGuarderia{
+    width: 35%;
+}
+.imgWelcome img{
+    width: 100%;
+    border: 1px solid black;
+}
+#citaPeluqueria{
+    margin:0 auto;
+}
+#citaGuarderia{
+    margin:0 auto;
+}
+#cajaCitas{
+    display: inline-flex;
+    margin-bottom: 1%;
+}
+input{
+    width: 100%;
+}

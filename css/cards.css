@@ -1,0 +1,31 @@
+/*cards*/
+.guarde{
+  background-color: darkgoldenrod;
+}
+.pelu{
+  background-color: cadetblue;
+}
+.card-footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+.card-footer a:hover{
+  background-color:cadetblue ;
+}
+
+/*a de pie de cards*/
+small.pie a {
+      color: white;
+      font-size: 16pt;
+      text-decoration: none;
+
+  }
+
+.card-deck {
+  margin: 15px auto;
+  width: 78%;
+}
+#masInfo{
+  color:#fff;
+}
