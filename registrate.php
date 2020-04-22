@@ -53,7 +53,7 @@ include_once 'header.php';
           </div>
           <div class="md-form">
               <br>
-            <p style="color:red;" align="center">* Los campos con un asterisco son obligatorios</p>
+            <p align="center">* Los campos con un asterisco son obligatorios</p>
           </div>
           <div class="text-center mt-4">
           <button class="btn btn-light-blue" style="background-color: aquamarine;">Regístrate</button>
