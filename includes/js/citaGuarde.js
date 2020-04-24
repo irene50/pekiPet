@@ -74,9 +74,9 @@ function precio() {
         case '5 horas':
             document.getElementById('formprecio').value = 14;
             break;
-        default:
+        /*default:
             document.getElementById('formprecio').value = 0;
-          break;
+          break;*/
       }
 }
 
