@@ -10,14 +10,12 @@ session_start();
 	$servicio=$_POST['tiempo'];
 	$p=$_POST['precio'];
 	$fecha=$_POST['fecha'];
-	$h=$_POST['hora'];
-	$min=$_POST['minutos'];
 	$id=$_SESSION['id'];
 	
 	//Insertar alerta de que se ha pedido su cita y volver al 
 	if ($servicio ==! 0) {
 		$servicio+=2;
-		if (crearCita($db,$m,$servicio,$p,$fecha,$h,$min,$id)) {
+		if (crearCita($db,$m,$servicio,$p,$fecha,$id)) {
 			header('Refresh: 3; URL=./welcome.php');
 			?><script>$.confirm({
 				boxWidth: '30%',
