@@ -61,6 +61,7 @@ include_once 'funciones.php';
                 <option value="1">Lavar y cortar</option>
                 <option value="2">Baño</option>
             </select>
+            <input type="hidden" name="tipo-servicio" id="tipo-servicio" value = ""/>
           </div>
           <div class="md-form">
             <label for="formtiempo2"></label>
@@ -147,6 +148,13 @@ include_once 'footer.php';
 
 <!-- calendario -->
 <script type="text/javascript">
+    $(document).ready(function() { 
+		  $( "#form-tiempo" ).on( "change", function(){
+        var tipoServicio=$('#form-tiempo option:selected').html();
+        $('#tipo-servicio').val(tipoServicio);
+      }); 
+  	}); 
+
 			$(function() { 
 				$("#form-fecha").datepicker();
 			});
