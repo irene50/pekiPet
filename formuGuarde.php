@@ -143,6 +143,7 @@ include_once 'funciones.php';
 ?>
 <!-- calendario -->
 <script type="text/javascript">
+			$(function() { 
 				$("#form-fecha").datepicker();
 			});
 </script>
