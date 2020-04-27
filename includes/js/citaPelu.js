@@ -51,6 +51,9 @@ function precio() {
     var valor = document.getElementById('formtiempo2').value;
     var valor2 = document.getElementById('form-tiempo').value;
     if (valor2 == 1) {
+        if (valor == 0) {
+            valor = 'Perro pequeño';
+        }
         switch (valor) {
             case 'Perro pequeño':
                 document.getElementById('formprecio').value = 30;
@@ -63,7 +66,10 @@ function precio() {
               break;
           }
     } else if (valor2 == 2) {
-        console.log(valor);
+        if (valor == 0) {
+            valor = 'Perro pequeño';
+        }
+        //console.log(valor);
         switch (valor) {
             case 'Perro pequeño':
                 document.getElementById('formprecio').value = 15;
