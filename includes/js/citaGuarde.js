@@ -49,12 +49,6 @@ function citas() {
 
 function precio() {
     var valor = document.getElementById('formtiempo2').value;
-    var valor2 = document.getElementById('form-tiempo').value;
-    if (valor == 0 && valor2 == 1) {
-        valor = 'Jornada completa mensual';
-    } if (valor == 0 && valor2 == 2) {
-        valor = '1 hora';
-    }
     switch (valor) {
         case 'Jornada completa mensual':
             document.getElementById('formprecio').value = 300;
@@ -80,9 +74,9 @@ function precio() {
         case '5 horas':
             document.getElementById('formprecio').value = 14;
             break;
-        default:
+        /*default:
             document.getElementById('formprecio').value = 0;
-          break;
+          break;*/
       }
 }
 
