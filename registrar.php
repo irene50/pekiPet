@@ -9,8 +9,13 @@
 	$u=$_POST['usuario'];
 	$p=$_POST['contrasena'];
 	$e=$_POST['email'];
+
+    $nombre_mascota = $_POST['nombre_mascota'];
+	$especie = $_POST['especie'];
+	$tamano = $_POST['tamano'];
+
 	if(isset($_POST['apellido2'])&&!(empty($_POST['apellido2']))){$ap2=$_POST['apellido2'];}else{$ap2=null;}
 	if (isset($_POST['telefono'])&&!(empty($_POST['telefono']))){$t=$_POST['telefono'];}else{$t=0;}
 	include_once 'funciones.php';
-	comprobar($n,$ap1,$u,$p,$e,$ap2,$t,$db);
+	comprobar($n,$ap1,$u,$p,$e,$ap2,$t, $nombre_mascota, $especie, $tamano, $db);
 ?>

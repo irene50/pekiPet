@@ -1,6 +1,7 @@
 <?php
 include_once 'header.php';
 ?>
+<script src="includes/js/validaciones2.js"></script>
 <div class="wrapper">
 
 <ul id="sb-slider" class="sb-slider">
@@ -220,8 +221,8 @@ include_once 'header.php';
           </div>
 
           <div class="md-form">
-            <label for="form-email"><i class="fa fa-envelope prefix grey-text"></i> Tu email</label>
-            <input type="email" id="form-email" name="form-email" required class="form-control">
+            <label for="email"><i class="fa fa-envelope prefix grey-text"></i> Tu email</label>
+            <input type="email" id="email" name="email" required class="form-control">
             
           </div>
 

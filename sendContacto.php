@@ -14,7 +14,7 @@ require './PHPMailer/src/SMTP.php';
 $email_user = "pekipetguarderiacanina@gmail.com";
 $email_password = "Jilguero_8";
 $the_subject =  $_POST["form-Subject"];
-$address_to = $_POST["form-email"];
+$address_to = $_POST["email"];
 $from_name = $_POST["form-name"];
 
 $emailCliente = new PHPMailer(true);
@@ -30,14 +30,14 @@ $emailPeki->Password = $email_password;
 $emailCliente->SMTPSecure = 'ssl';
 $emailCliente->Host = "smtp.gmail.com"; // GMail
 $emailCliente->Port = 465;
-$emailCliente->SMTPDebug = 4; 
+//$emailCliente->SMTPDebug = 4; 
 $emailCliente->IsSMTP(); // use SMTP
 $emailCliente->SMTPAuth = true;
 
 $emailPeki->SMTPSecure = 'ssl';
 $emailPeki->Host = "smtp.gmail.com"; // GMail
 $emailPeki->Port = 465;
-$emailPeki->SMTPDebug = 4; 
+//$emailPeki->SMTPDebug = 4; 
 $emailPeki->IsSMTP(); // use SMTP
 $emailPeki->SMTPAuth = true;
 
@@ -48,7 +48,7 @@ $emailPeki->Subject = $the_subject;
 
 $mensaje="Mensaje del formulario de contacto de pekipet ";
 $mensaje.= "<br>Nombre: ". $_POST['form-name'];
-$mensaje.= "<br>Email: ".$_POST['form-email'];
+$mensaje.= "<br>Email: ".$_POST['email'];
 $mensaje.= "<br>Mensaje: \n".$_POST['form-text'];
 
 $emailPeki->Body = $mensaje;

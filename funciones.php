@@ -1,5 +1,5 @@
 <?php 
-function comprobar ($n,$ap1,$u,$p,$e,$ap2,$t,$db){
+function comprobar ($n,$ap1,$u,$p,$e,$ap2,$t, $nombre_mascota, $especie, $tamano, $db){
 	$array = array();
 	
 	//usuario
@@ -41,7 +41,11 @@ function comprobar ($n,$ap1,$u,$p,$e,$ap2,$t,$db){
 		//Agregamos el 2
 		$sqll="INSERT INTO admin(usuario,password,id) VALUES ('$u','$p','$id')";
 		$resulttt=mysqli_query($db,$sqll);
-		if($resultt&&$resulttt){
+        
+        $sql_mascota = "INSERT INTO animal (id, nombre, especie, tamano) VALUES ('$id', '$nombre_mascota', '$especie', '$tamano')";
+		$resultado = mysqli_query($db, $sql_mascota);
+        
+		if($resultt&&$resulttt && $resultado){
 			header('Refresh: 3; URL=./entra.php');
 			?><script>$.confirm({
 				boxWidth: '30%',
@@ -101,25 +105,54 @@ function loguear($u,$p,$db){
       }
 	  return $x;  
 }
-function crearCita($db,$m,$servicio,$p,$fecha,$id){
+function crearCita($db,$m,$servicio,$p,$fecha,$h,$min,$id){
 	//No valido la mascota por que enteoria sale de la base de datos
 	$tipo=array("cortar","limpiar","dia","horas");
 	$sql="SELECT idAnimal from animal where id='$id' and nombre='$m'";
 	$result=mysqli_query($db,$sql);
+	$row=mysqli_fetch_assoc($result);
+	$idAnimal=$row['idAnimal'];
+	
 	$r=mysqli_query($db,"SELECT numero from precios where precio=$p");
 	$rrow=mysqli_fetch_assoc($r);
 	$idPrecio=$rrow['numero'];
 	//No compruebo result por que el nombre se saca de la base de datos, es decir, que va a estar si o si
-	$row=mysqli_fetch_assoc($result);
-	$idAnimal=$row['idAnimal'];
-	$cita=$tipo[$servicio-1];
-	//var_dump($cita);
 	$arrayFecha=explode('/',$fecha);
-	$nFecha=$arrayFecha[2]."-".$arrayFecha[1]."-".$arrayFecha[0];
-	$fechaFinal=date("Y-m-d",strtotime($nFecha));
+	$nFecha=$arrayFecha[2]."-".$arrayFecha[1]."-".$arrayFecha[0]." ".$h.":".$min.":00";
+	$fechaFinal=date("Y-m-d H:i:s",strtotime($nFecha));
+	if ($servicio<=2){
+		$f_f=null;
+	}else {
+		if ($servicio==3){
+			if ($p>=200){
+				$f_f=date("Y-m-d H:i:s",strtotime($fechaFinal."+ 1 month"));
+			}else{
+				$f_f=strtotime('+6 hour' ,strtotime($fechaFinal));
+				$f_f=date( 'Y-m-d H:i:s', $f_f);
+			}
+		}else{
+			if ($p==6){
+				$f_f=strtotime('+1 hour' ,strtotime($fechaFinal));
+				$f_f=date( 'Y-m-d H:i:s', $f_f);
+			}else if ($p==8){
+				$f_f=strtotime('+2 hour' ,strtotime($fechaFinal));
+				$f_f=date( 'Y-m-d H:i:s', $f_f);
+			}else if ($p==10){
+				$f_f=strtotime('+3 hour' ,strtotime($fechaFinal));
+				$f_f=date( 'Y-m-d H:i:s', $f_f);
+			}else if ($p==12){
+				$f_f=strtotime('+4 hour' ,strtotime($fechaFinal));
+				$f_f=date( 'Y-m-d H:i:s', $f_f);
+			}else {
+				$f_f=strtotime('+5 hour' ,strtotime($fechaFinal));
+				$f_f=date( 'Y-m-d H:i:s', $f_f);
+			}
+		}
+	}
+	$cita=$tipo[$servicio-1];
 	//El campo tamano lo dejo por si en algun momento lo validamos mas a fondo
 	//Ahora que tenemos toda la informacion vamos a hacer la cita;
-	$sq="INSERT INTO cita (idAnimal,tipoServicio,fecha,precio,idPrecio) VALUES ('$idAnimal','$cita','$fechaFinal','$p',$idPrecio)";
+	$sq="INSERT INTO cita (idAnimal,tipoServicio,fecha,fecha_fin,precio,idPrecio) VALUES ('$idAnimal','$cita','$fechaFinal','$f_f','$p',$idPrecio)";
 	$resul=mysqli_query($db,$sq);
 	//Comprobar
 	if ($result){
@@ -195,20 +228,23 @@ function getMascotas($db,$id){
 function mostrarCitas($db,$id){
 	$mascotas=array();
 	$animal=array();
-	$servicio=array();
-	$fecha=array();
+	$servicio=array('Jornada Completa Mensual','Media Jornada Mensual','Media jornada','Horas');
+	$servicios=array();
+	$fechai=array();
+	$fechaf=array();
 	$precio=array();
-	$fecha=date("Y-m-d");
-	$sql="SELECT cita.idAnimal,tipoServicio,fecha,precio from cita,animal where cita.idAnimal=animal.idAnimal and id=$id and fecha>$fecha";
+	$fecha=date("Y-m-d H:i:s");
+	$sql="SELECT cita.idAnimal,tipoServicio,fecha,fecha_fin,precio from cita,animal where cita.idAnimal=animal.idAnimal and id=$id and fecha>'$fecha'";
 	$result=mysqli_query($db,$sql);
-	$count=0;
+	if ($result){
 	while($row = mysqli_fetch_assoc($result)){
 			$animal[]=$row['idAnimal'];//Cambiar por el nombre antes de mostrar
-			$servicio[]=$row['tipoServicio'];//cambiar por servicio hacer despues
-			$f=date("Y-m-d H:i:s",strtotime($row['fecha']));//Esta mal
-			$fecha[$count]=$f;
+			$servicios[]=$row['tipoServicio'];
+			$f=date("Y-m-d H:i:s",strtotime($row['fecha']));
+			$fechai[]=$f;
+			$ff=date("Y-m-d H:i:s",strtotime($row['fecha_fin']));
+			$fechaf[]=$ff;
 			$precio[]=$row['precio'];
-			$count+=1;
 	}
 	foreach ($animal as $mascota){
 		$resul=mysqli_query($db,"SELECT nombre from animal where idAnimal=$mascota");
@@ -217,14 +253,31 @@ function mostrarCitas($db,$id){
 		}
 	}
 	//hacer la tabla
+	echo "Peluqueria";//Decorrar esto
 	echo "
 	<table border='1'>
-	<tr><td>Nombre</td> <td>Servicio</td> <td>Fecha</td> <td>Precio</td></tr>";
+	<tr><td>Nombre</td> <td>Servicio</td> <td>Fecha Inicio</td> <td>Precio</td></tr>";
 	foreach($mascotas as $l => $valor){
-
-	echo "<tr><td>".$valor."</td> <td>".$servicio[$l]."</td> <td>".$fecha[$l]."</td> <td>".$precio[$l].	"</td></tr>";	
+		if ($servicios[$l]=='limpiar'){$se="Baño";}else if($servicios[$l]=='cortar'){$se="Lavar y cortar";}
+		if ($fechai[$l]>$fechaf[$l]){
+			echo "<tr><td>".$valor."</td> <td>".$se."</td> <td>".$fechai[$l]."</td> <td>".$precio[$l].	"</td></tr>";	
+		}
 	}
 	echo "</table>";
+	//-----------------------------------------------------------------------------
+	echo "Guarderia";//Decorrar esto
+	echo "
+	<table border='1'>
+	<tr><td>Nombre</td> <td>Servicio</td> <td>Fecha Inicio</td> <td>Fecha Fin</td> <td>Precio</td></tr>";
+	//var_dump($mascotas);
+	foreach($mascotas as $l => $valor){
+		if ($precio[$l]>=200){if($precio[$l]==300){$i=0;}else $i=1;}else if($precio[$l]==16){$i=2;}else $i=3;
+		if ($fechai[$l]<$fechaf[$l]){
+			echo "<tr><td>".$valor."</td> <td>".$servicio[$i]."</td> <td>".$fechai[$l]."</td> <td>".$fechaf[$l]."</td> <td>".$precio[$l].	"</td></tr>";	
+		}
+	}
+	echo "</table>";
+	}else{echo "No tienes ninguna cita";}
 }
 
 function mandarMensaje($m,$db){
