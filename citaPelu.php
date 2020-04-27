@@ -97,7 +97,7 @@
 	
 	
 	//Insertar alerta de que se ha pedido su cita y volver al 
-	if ($servicio ==! 0) {
+	if ($servicio2 ==! 0) {
 		if (crearCita($db,$m,$servicio2,$p,$fecha,$h,$min,$id)) {
 			header('Refresh: 3; URL=./welcome.php');
 			?><script>$.confirm({
@@ -114,7 +114,7 @@
 			$emailCliente->IsHTML(true);
 			$emailCliente->Send();
 		} else {
-			header('Refresh: 3; URL=./welcome.php');
+			/*header('Refresh: 3; URL=./welcome.php');*/
 			?><script>$.confirm({
 				boxWidth: '30%',
 				useBootstrap: false,

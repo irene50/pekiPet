@@ -93,8 +93,8 @@ session_start();
 
 	
 	//Insertar alerta de que se ha pedido su cita y volver al 
-	if ($servicio ==! 0) {
-		$servicio+=2;
+	if ($servicio2 ==! 0) {
+		$servicio2+=2;
 		if (crearCita($db,$m,$servicio2,$p,$fecha,$h,$min,$id)) {
 			header('Refresh: 3; URL=./welcome.php');
 			?><script>$.confirm({
