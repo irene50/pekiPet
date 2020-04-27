@@ -72,7 +72,7 @@ function enviar() {
     }
     if (vblEnviar) {
         //alert("Formulario enviado");
-        msj('Login no válido','Tu usuario o contraseña son incorrectos','Volver');
+        //msj('Login no válido','Tu usuario o contraseña son incorrectos','Volver');
     }
     return vblEnviar;
 }
