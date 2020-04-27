@@ -23,6 +23,7 @@ session_start();
 
 	$m=$_POST['mascota'];
 	$servicio=$_POST['tiempo2'];
+	$servicio2=$_POST['tiempo'];
 	$p=$_POST['precio'];
 	$fecha=$_POST['fecha'];
 	$h=$_POST['hora'];
@@ -94,7 +95,7 @@ session_start();
 	//Insertar alerta de que se ha pedido su cita y volver al 
 	if ($servicio ==! 0) {
 		$servicio+=2;
-		if (crearCita($db,$m,$servicio,$p,$fecha,$h,$min,$id)) {
+		if (crearCita($db,$m,$servicio2,$p,$fecha,$h,$min,$id)) {
 			header('Refresh: 3; URL=./welcome.php');
 			?><script>$.confirm({
 				boxWidth: '30%',
