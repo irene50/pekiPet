@@ -154,8 +154,9 @@ function crearCita($db,$m,$servicio,$p,$fecha,$h,$min,$id){
 	//Ahora que tenemos toda la informacion vamos a hacer la cita;
 	$sq="INSERT INTO cita (idAnimal,tipoServicio,fecha,fecha_fin,precio,idPrecio) VALUES ('$idAnimal','$cita','$fechaFinal','$f_f','$p',$idPrecio)";
 	$resul=mysqli_query($db,$sq);
+	print_r($sq);
 	//Comprobar
-	if ($result){
+	if ($resul){
 		$comprobar=true;
 	}else $comprobar=false;
 	return $comprobar;
