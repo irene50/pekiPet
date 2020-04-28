@@ -50,32 +50,46 @@ function citas() {
 function precio() {
     var valor = document.getElementById('formtiempo2').value;
     var valor2 = document.getElementById('form-tiempo').value;
+    var descuento = parseInt(document.getElementById('descuento').value);
     if (valor2 == 1) {
+        if (valor == 0) {
+            valor = 'Perro pequeño';
+        }
         switch (valor) {
             case 'Perro pequeño':
-                document.getElementById('formprecio').value = 30;
+                document.getElementById('formprecio').value = 30 - (30*(descuento/100));
+                document.getElementById('anterior').value = 30;
               break;
             case 'Perro mediano':
-                document.getElementById('formprecio').value = 35;
+                document.getElementById('formprecio').value = 35 - (35*(descuento/100));
+                document.getElementById('anterior').value = 35;
                 break;
             case 'Perro grande':
-                document.getElementById('formprecio').value = 40;
+                document.getElementById('formprecio').value = 40 - (40*(descuento/100));
+                document.getElementById('anterior').value = 40;
               break;
           }
     } else if (valor2 == 2) {
+        if (valor == 0) {
+            valor = 'Perro pequeño';
+        }
         console.log(valor);
         switch (valor) {
             case 'Perro pequeño':
-                document.getElementById('formprecio').value = 15;
+                document.getElementById('formprecio').value = 15 - (15*(descuento/100));
+                document.getElementById('anterior').value = 15;
               break;
             case 'Perro mediano':
-                document.getElementById('formprecio').value = 20;
+                document.getElementById('formprecio').value = 20 - (20*(descuento/100));
+                document.getElementById('anterior').value = 20;
                 break;
             case 'Perro grande':
-                document.getElementById('formprecio').value = 30;
+                document.getElementById('formprecio').value = 30 - (30*(descuento/100));
+                document.getElementById('anterior').value = 30;
               break;
             case 'Perro gigante (+50kg)':
-                document.getElementById('formprecio').value = 40;
+                document.getElementById('formprecio').value = 40 - (40*(descuento/100));
+                document.getElementById('anterior').value = 40;
               break;
         }
     } else {
@@ -86,10 +100,13 @@ function precio() {
 
 function precio2() {
     var valor = document.getElementById('form-tiempo').value;
+    var descuento = parseInt(document.getElementById('descuento').value);
     if (valor == 1) {
-        document.getElementById('formprecio').value = 30;
+        document.getElementById('formprecio').value = 30 - (30*(descuento/100));
+        document.getElementById('anterior').value = 30;
     } else if (valor == 2) {
-        document.getElementById('formprecio').value = 15;
+        document.getElementById('formprecio').value = 15 - (15*(descuento/100));
+        document.getElementById('anterior').value = 15;
     } else {
         document.getElementById('formprecio').value = 0;
     }

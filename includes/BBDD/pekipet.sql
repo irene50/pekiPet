@@ -1,20 +1,22 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.1
--- http://www.phpmyadmin.net
+-- version 4.9.2
+-- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 27-04-2020 a las 10:38:11
--- Versión del servidor: 5.5.24-log
--- Versión de PHP: 5.4.3
+-- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 28-04-2020 a las 20:06:40
+-- Versión del servidor: 8.0.18
+-- Versión de PHP: 7.3.12
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de datos: `pekipet`
@@ -26,6 +28,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `admin`
 --
 
+DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
   `id` int(10) NOT NULL,
   `usuario` varchar(30) NOT NULL,
@@ -34,20 +37,13 @@ CREATE TABLE IF NOT EXISTS `admin` (
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `admin`
---
-
-INSERT INTO `admin` (`id`, `usuario`, `password`) VALUES
-(31, 'Kaysune', 'BNMghjtyu567'),
-(32, 'Sergi', 'BNMghjtyu567');
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `animal`
 --
 
+DROP TABLE IF EXISTS `animal`;
 CREATE TABLE IF NOT EXISTS `animal` (
   `id` int(10) NOT NULL,
   `idAnimal` int(10) NOT NULL AUTO_INCREMENT,
@@ -56,15 +52,7 @@ CREATE TABLE IF NOT EXISTS `animal` (
   `tamano` set('grande','mediano','pequeno') NOT NULL,
   PRIMARY KEY (`idAnimal`),
   KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
-
---
--- Volcado de datos para la tabla `animal`
---
-
-INSERT INTO `animal` (`id`, `idAnimal`, `nombre`, `especie`, `tamano`) VALUES
-(32, 2, 'Pimpo', 'perro', 'mediano'),
-(32, 3, 'Minina', 'gato', 'pequeno');
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -72,12 +60,13 @@ INSERT INTO `animal` (`id`, `idAnimal`, `nombre`, `especie`, `tamano`) VALUES
 -- Estructura de tabla para la tabla `cita`
 --
 
+DROP TABLE IF EXISTS `cita`;
 CREATE TABLE IF NOT EXISTS `cita` (
   `idCita` int(11) NOT NULL AUTO_INCREMENT,
   `idAnimal` int(10) NOT NULL,
   `tipoServicio` set('dia','horas','cortar','limpiar') NOT NULL,
   `fecha` datetime NOT NULL,
-  `fecha_fin` datetime NOT NULL,
+  `fecha_fin` datetime DEFAULT NULL,
   `idPrecio` int(11) NOT NULL,
   `precio` int(11) NOT NULL,
   PRIMARY KEY (`idCita`),
@@ -85,42 +74,7 @@ CREATE TABLE IF NOT EXISTS `cita` (
   KEY `idAnimal_2` (`idAnimal`),
   KEY `idPrecio` (`idPrecio`),
   KEY `idPrecio_2` (`idPrecio`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=58 ;
-
---
--- Volcado de datos para la tabla `cita`
---
-
-INSERT INTO `cita` (`idCita`, `idAnimal`, `tipoServicio`, `fecha`, `fecha_fin`, `idPrecio`, `precio`) VALUES
-(12, 2, 'limpiar', '2020-04-24 00:00:00', '0000-00-00 00:00:00', 0, 20),
-(13, 2, 'limpiar', '2020-04-24 00:00:00', '0000-00-00 00:00:00', 0, 20),
-(14, 2, 'cortar', '2020-04-24 00:00:00', '0000-00-00 00:00:00', 32, 35),
-(15, 2, 'cortar', '2020-04-23 00:00:00', '0000-00-00 00:00:00', 32, 35),
-(20, 2, 'horas', '2020-04-22 00:00:00', '0000-00-00 00:00:00', 21, 6),
-(21, 2, 'horas', '2020-04-22 00:00:00', '0000-00-00 00:00:00', 21, 6),
-(22, 2, 'horas', '2020-04-22 00:00:00', '0000-00-00 00:00:00', 21, 6),
-(23, 2, 'cortar', '2020-04-22 00:00:00', '0000-00-00 00:00:00', 31, 30),
-(24, 2, 'cortar', '2020-04-22 00:00:00', '0000-00-00 00:00:00', 31, 30),
-(26, 3, 'limpiar', '2020-04-24 10:00:00', '0000-00-00 00:00:00', 31, 30),
-(36, 3, 'cortar', '2020-04-23 10:30:00', '0000-00-00 00:00:00', 31, 30),
-(40, 3, 'dia', '2020-04-23 10:00:00', '2020-05-23 10:00:00', 11, 300),
-(41, 3, 'dia', '2020-04-23 10:00:00', '2020-05-23 10:00:00', 11, 300),
-(42, 3, 'dia', '2020-04-23 11:30:00', '0000-00-00 00:00:00', 13, 16),
-(43, 3, 'dia', '2020-04-23 11:30:00', '0000-00-00 00:00:00', 13, 16),
-(44, 3, 'dia', '2020-04-23 11:30:00', '2020-04-23 15:30:00', 13, 16),
-(45, 3, 'dia', '2020-04-23 11:30:00', '2020-04-23 15:30:00', 13, 16),
-(46, 3, 'dia', '2020-04-23 11:00:00', '2020-04-23 15:00:00', 13, 16),
-(47, 3, 'horas', '2020-04-23 09:00:00', '0000-00-00 00:00:00', 23, 10),
-(48, 3, 'horas', '2020-04-23 09:00:00', '2020-04-23 12:00:00', 23, 10),
-(49, 3, 'horas', '2020-04-23 09:00:00', '2020-04-23 12:00:00', 23, 10),
-(50, 2, 'limpiar', '2020-04-24 19:00:00', '0000-00-00 00:00:00', 31, 30),
-(51, 2, 'dia', '2020-05-01 02:01:00', '2020-06-01 02:01:00', 11, 300),
-(52, 2, 'dia', '2020-05-01 02:01:00', '2020-06-01 02:01:00', 11, 300),
-(53, 2, 'dia', '2020-05-01 02:01:00', '2020-06-01 02:01:00', 11, 300),
-(54, 2, 'horas', '2020-04-24 10:30:00', '2020-04-24 14:30:00', 24, 12),
-(55, 3, 'dia', '2020-04-24 10:00:00', '2020-05-24 10:00:00', 11, 300),
-(56, 2, 'cortar', '2020-04-28 10:00:00', '0000-00-00 00:00:00', 32, 35),
-(57, 3, 'limpiar', '2020-04-29 14:30:00', '0000-00-00 00:00:00', 42, 20);
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -128,22 +82,51 @@ INSERT INTO `cita` (`idCita`, `idAnimal`, `tipoServicio`, `fecha`, `fecha_fin`, 
 -- Estructura de tabla para la tabla `cliente`
 --
 
+DROP TABLE IF EXISTS `cliente`;
 CREATE TABLE IF NOT EXISTS `cliente` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(30) NOT NULL,
   `apellidos` varchar(30) NOT NULL,
   `telefono` int(9) NOT NULL,
   `email` varchar(30) NOT NULL,
+  `descuento` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
--- Volcado de datos para la tabla `cliente`
+-- Estructura de tabla para la tabla `cupones`
 --
 
-INSERT INTO `cliente` (`id`, `nombre`, `apellidos`, `telefono`, `email`) VALUES
-(31, 'Izhar', 'Arias Campos', 664894123, 'izharias1@hotmail.com'),
-(32, 'Serdone', 'Ramos Guindilla', 617345660, 'sergio@hotmail.com');
+DROP TABLE IF EXISTS `cupones`;
+CREATE TABLE IF NOT EXISTS `cupones` (
+  `codigo` varchar(14) COLLATE utf8_spanish_ci NOT NULL,
+  `valido` int(11) NOT NULL,
+  `descuento` int(11) NOT NULL,
+  PRIMARY KEY (`codigo`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `cupones`
+--
+
+INSERT INTO `cupones` (`codigo`, `valido`, `descuento`) VALUES
+('Q1jW-jU65-47hW', 1, 50),
+('T1mT-cN65-H79F', 1, 25),
+('H1mC-oA65-R7bU', 1, 10),
+('X1xL-iE65-57aQ', 1, 5),
+('91hC-wC65-U7dB', 1, 25),
+('F1t4-4A65-J7dP', 1, 20),
+('N15J-aG65-27dE', 1, 30),
+('31qS-9J65-X7iM', 1, 5),
+('71xQ-jT65-S7dC', 1, 15),
+('M1gH-mL65-N7nR', 1, 10),
+('B17S-gE65-K73M', 1, 25),
+('Q1v3-i765-P7x2', 1, 70),
+('81dW-rG65-F7i3', 1, 25),
+('L1jX-qU65-77zS', 1, 10),
+('C1xL-gT65-27yB', 1, 20);
 
 -- --------------------------------------------------------
 
@@ -151,6 +134,7 @@ INSERT INTO `cliente` (`id`, `nombre`, `apellidos`, `telefono`, `email`) VALUES
 -- Estructura de tabla para la tabla `precios`
 --
 
+DROP TABLE IF EXISTS `precios`;
 CREATE TABLE IF NOT EXISTS `precios` (
   `numero` int(11) NOT NULL,
   `precio` int(11) NOT NULL,
@@ -199,6 +183,7 @@ ALTER TABLE `animal`
 --
 ALTER TABLE `cita`
   ADD CONSTRAINT `cita_ibfk_2` FOREIGN KEY (`idAnimal`) REFERENCES `animal` (`idAnimal`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
