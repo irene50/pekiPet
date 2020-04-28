@@ -156,6 +156,6 @@ include_once 'footer.php';
   	}); 
 
 			$(function() { 
-				$("#form-fecha").datepicker();
+				$("#form-fecha").datepicker({minDate: 0 });
 			});
 </script>
