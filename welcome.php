@@ -21,6 +21,10 @@ include_once 'header.php';
         <div id="welcome">
             <h2>Bienvenido <?php echo ($_SESSION['user']); ?> </h2>
             <br>
+            <?php if ($_SESSION['descuento'] != 0 ) {
+                ?><h5>Descuento actual del <?php echo ($_SESSION['descuento']); ?> %</h5><?php
+            }
+            ?>
             <h6 align="center">¿Para que servicio quiere pedir la cita?</h6>
             <br>
             <div id="cajaCitas">

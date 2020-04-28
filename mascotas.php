@@ -47,22 +47,28 @@ include_once 'funciones.php';
           </div>
             <!--Aqui hay que cargar las mascotas de la BBDD-->
             </form>
-            <form name="segundo" action="./cambiarMascota.php" method = "post">
-          <div class="md-form">
-            <label for="form-mascota">Nombre de tu mascota </label>
-            <select name="mascota" id="form-mascota" class="form-control" required>
-				<?php foreach ($mascotas as $mascota) : ?>
-					<?php echo '<option>'. $mascota['nombre'] . '</option>'; ?>
-				<?php endforEach; ?>
-			</select>
-          </div>
-          <div class="text-center mt-4">
-          <input type="submit" name="quitar" class="btn btn-light-blue" style="background-color: red;" value="Quitar mascota"/>
-          </div>
-        </div>
+            <?php
+            if ($_SESSION['numMascotas'] >= 2) {
+              ?>
+              <form name="segundo" action="./cambiarMascota.php" method = "post">
+                  <div class="md-form">
+                    <label for="form-mascota">Nombre de tu mascota </label>
+                    <select name="mascota" id="form-mascota" class="form-control" required>
+                <?php foreach ($mascotas as $mascota) : ?>
+                  <?php echo '<option>'. $mascota['nombre'] . '</option>'; ?>
+                <?php endforEach; ?>
+              </select>
+                  </div>
+                  <div class="text-center mt-4">
+                  <input type="submit" name="quitar" class="btn btn-light-blue" style="background-color: red;" value="Quitar mascota"/>
+                  </div>
+                </div>
 
-      </div>
-      </form>
+              </div>
+              </form>
+              <?php
+            }
+            ?>
       <!--Form with header-->
 
     </div>
