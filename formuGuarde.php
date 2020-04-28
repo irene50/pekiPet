@@ -144,7 +144,7 @@ include_once 'funciones.php';
 <!-- calendario -->
 <script type="text/javascript">
 			$(function() { 
-				$("#form-fecha").datepicker();
+				$("#form-fecha").datepicker({minDate: 0 });
 			});
 </script>
 <?php
