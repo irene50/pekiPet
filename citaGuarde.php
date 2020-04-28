@@ -17,14 +17,15 @@ session_start();
 
 	$email_user = "pekipetguarderiacanina@gmail.com";
 	$email_password = "Jilguero_8";
-	$address_to = $_POST["email"];
-	$from_name = $_POST["nombre"];
+	$address_to = $_SESSION["email"];
+	$from_name = $_SESSION["nombre"];
 	/**/
 
 	$m=$_POST['mascota'];
 	$servicio=$_POST['tiempo2'];
 	$servicio2=$_POST['tiempo'];
-	$p=$_POST['precio'];
+	$p=$_POST['anterior'];
+	$precio = $_POST['precio'];
 	$fecha=$_POST['fecha'];
 	$h=$_POST['hora'];
 	$min=$_POST['minutos'];
@@ -67,12 +68,12 @@ session_start();
 
 	$mensaje="Nueva cita guarderia ";
 	$mensaje.= "<br>Nombre: ". $from_name;
-	$mensaje.= "<br>Email: ".$_POST['email'];
+	$mensaje.= "<br>Email: ".$_SESSION['email'];
 	$mensaje.= "<br>Nombre mascota: ".$m;
 	$mensaje.= "<br>Fecha: ".$fecha;
 	$mensaje.= "<br>Hora: ".$h.":".$min;
 	$mensaje.= "<br>Servicio: ".$servicio;
-	$mensaje.= "<br>Precio estimado: ".$p;
+	$mensaje.= "<br>Precio estimado: ".$precio;
 
 	$emailPeki->Body = $mensaje;
 
@@ -86,7 +87,7 @@ session_start();
 						   <p>Fecha: $fecha</p>
 						   <p>Hora: $h:$min</p>
 						   <p>Servicio: $servicio</p>
-						   <p>Precio estimado: $p €</p>
+						   <p>Precio estimado: $precio €</p>
 						   <p>Para cualquier modificación o anulación de la cita, llámenos al telefono: xxxxxxxxx</p>
 	 						<b>Gracias!</b>";
 	
@@ -95,7 +96,7 @@ session_start();
 	//Insertar alerta de que se ha pedido su cita y volver al 
 	if ($servicio2 ==! 0) {
 		$servicio2+=2;
-		if (crearCita($db,$m,$servicio2,$p,$fecha,$h,$min,$id)) {
+		if (crearCita($db,$m,$servicio2,$p,$fecha,$h,$min,$id, $precio)) {
 			header('Refresh: 3; URL=./welcome.php');
 			?><script>$.confirm({
 				boxWidth: '30%',

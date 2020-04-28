@@ -30,20 +30,8 @@ include_once 'funciones.php';
 
           <!--Body-->
           <div class="md-form">
-            <label for="form-nombre">Nombre </label>
-            <input type="text" name="nombre" id="form-nombre" class="form-control" required value="<?php echo($_SESSION['nombre']) ?>">
-          </div>
-          <div class="md-form">
-            <label for="form-apellidos">Apellidos </label>
-            <input type="text" name="apellidos" id="form-apellidos" class="form-control" required value="<?php echo($_SESSION['apellidos']) ?>">
-          </div>
-          <div class="md-form">
             <label for="form-tfno">Teléfono </label>
             <input type="text" name="telefono" id="form-tfno" class="form-control" required value="<?php if ($_SESSION['telefono'] !== '0') echo($_SESSION['telefono']); ?>">
-          </div>
-          <div class="md-form">
-            <label for="form-email">Email </label>
-            <input type="text" name="email" id="form-email" class="form-control" required value="<?php echo($_SESSION['email']) ?>">
           </div>
           <!--Esto terminaria siendo un desplegable con las mascotas del cliente-->
           <div class="md-form">
@@ -103,6 +91,12 @@ include_once 'funciones.php';
               </div>
             </div>
           </div>
+          <div class="md-form">
+            <label for="observaciones">Observaciones </label>
+            <textarea type="text" name="observaciones" id="observaciones" class="form-control"></textarea>
+          </div>
+          <input type="hidden" name="descuento" id="descuento" class="form-control" value="<?php echo ($_SESSION['descuento']); ?>">
+          <input type="hidden" name="anterior" id="anterior" class="form-control" value="0">
           <div class="text-center mt-4">
           <button class="btn btn-light-blue" id="cita" style="background-color: aquamarine;">Pedir cita</button>
           </div>

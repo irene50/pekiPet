@@ -32,7 +32,7 @@ function comprobar ($n,$ap1,$u,$p,$e,$ap2,$t, $nombre_mascota, $especie, $tamano
 		//Cogemos el id
 		$aps=$ap1." ".$ap2;
 		//Agregamos el 1
-		$sql="INSERT INTO cliente (nombre,apellidos,telefono,email) VALUES('$n','$aps','$t','$e')";
+		$sql="INSERT INTO cliente (nombre,apellidos,telefono,email, descuento) VALUES('$n','$aps','$t','$e',0)";
 		$resultt=mysqli_query($db,$sql);
 		//Cogemos el id 
 		$result=mysqli_query($db,"SELECT max(id) from cliente");
@@ -41,16 +41,14 @@ function comprobar ($n,$ap1,$u,$p,$e,$ap2,$t, $nombre_mascota, $especie, $tamano
 		//Agregamos el 2
 		$sqll="INSERT INTO admin(usuario,password,id) VALUES ('$u','$p','$id')";
 		$resulttt=mysqli_query($db,$sqll);
-        
         $sql_mascota = "INSERT INTO animal (id, nombre, especie, tamano) VALUES ('$id', '$nombre_mascota', '$especie', '$tamano')";
 		$resultado = mysqli_query($db, $sql_mascota);
-        
 		if($resultt&&$resulttt && $resultado){
 			header('Refresh: 3; URL=./entra.php');
 			?><script>$.confirm({
 				boxWidth: '30%',
 				useBootstrap: false,
-				theme: 'light',
+				theme: 'dark',
 				icon: 'fa fa-paw',
 				title: 'Usuario registrado!',
 				content: 'Se ha creado con éxito tu registro.'
@@ -77,7 +75,7 @@ function loguear($u,$p,$db){
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 	  $count = mysqli_num_rows($result);
 	  if($count == 1) {
-		$sql2 = "SELECT nombre, apellidos, telefono, email FROM cliente WHERE id = " . $row['id'];
+		$sql2 = "SELECT nombre, apellidos, telefono, email, descuento FROM cliente WHERE id = " . $row['id'];
 	  	$result2 = mysqli_query($db,$sql2);
 	  	$row2 = mysqli_fetch_array($result2,MYSQLI_ASSOC);
 	  }
@@ -89,6 +87,10 @@ function loguear($u,$p,$db){
 		 $_SESSION['apellidos'] = $row2['apellidos'];
 		 $_SESSION['telefono'] = $row2['telefono'];
 		 $_SESSION['email'] = $row2['email'];
+		 $_SESSION['descuento'] = $row2['descuento'];
+		 $sqlMascotas = mysqli_query($db, "SELECT count(*) from animal where id=".$row['id']);
+		 $numMascotas = mysqli_fetch_assoc($sqlMascotas);
+		 $_SESSION['numMascotas'] = $numMascotas['count(*)'];
 		 $x=true;
       }else {
 		$x=false;
@@ -105,7 +107,7 @@ function loguear($u,$p,$db){
       }
 	  return $x;  
 }
-function crearCita($db,$m,$servicio,$p,$fecha,$h,$min,$id){
+function crearCita($db,$m,$servicio,$p,$fecha,$h,$min,$id, $precio){
 	//No valido la mascota por que enteoria sale de la base de datos
 	$tipo=array("cortar","limpiar","dia","horas");
 	$sql="SELECT idAnimal from animal where id='$id' and nombre='$m'";
@@ -152,10 +154,16 @@ function crearCita($db,$m,$servicio,$p,$fecha,$h,$min,$id){
 	$cita=$tipo[$servicio-1];
 	//El campo tamano lo dejo por si en algun momento lo validamos mas a fondo
 	//Ahora que tenemos toda la informacion vamos a hacer la cita;
-	$sq="INSERT INTO cita (idAnimal,tipoServicio,fecha,fecha_fin,precio,idPrecio) VALUES ('$idAnimal','$cita','$fechaFinal','$f_f','$p',$idPrecio)";
+	if ($f_f == null) {
+		$sq="INSERT INTO cita (idAnimal,tipoServicio,fecha,fecha_fin,precio,idPrecio) VALUES ('$idAnimal','$cita','$fechaFinal',NULL,'$precio',$idPrecio)";
+	} else {
+		$sq="INSERT INTO cita (idAnimal,tipoServicio,fecha,fecha_fin,precio,idPrecio) VALUES ('$idAnimal','$cita','$fechaFinal','$f_f','$precio',$idPrecio)";
+	}
 	$resul=mysqli_query($db,$sq);
 	//Comprobar
 	if ($resul){
+		$_SESSION['descuento'] = 0;
+		$resultado = mysqli_query($db,"UPDATE cliente SET descuento = " . $_SESSION['descuento'] . " where id=" . $_SESSION['id']);
 		$comprobar=true;
 	}else $comprobar=false;
 	return $comprobar;
@@ -183,6 +191,7 @@ function newPassword($db,$new,$id){
 function deleteAnimal($db,$id,$nombre){
 	$result=mysqli_query($db,"DELETE from animal where id=$id and nombre='$nombre'");
 	if ($result){
+		$_SESSION['numMascotas'] = ($_SESSION['numMascotas'] - 1);
 		$comprobar=true;
 	}else $comprobar=false;
 	return $comprobar;
@@ -197,6 +206,7 @@ function newAnimal($db,$name,$animal,$altura,$id){
 		$comprobar=false;
 	}else{
 		$resul=mysqli_query($db,"INSERT INTO animal (id,nombre,especie,tamano) VALUES ('$id','$name','$animal','$altura')");
+		$_SESSION['numMascotas'] = ($_SESSION['numMascotas'] + 1);
 		$comprobar=true;
 	} 
 	return $comprobar;
@@ -290,5 +300,24 @@ function mandarMensaje($m,$db){
 		$usuario=$row['usuario'];*/
 	}else $password=0;
 	return $password;
+}
+
+function comprobarCodigo($db, $codigo) {
+	//$activo = -1;
+	$resultado = mysqli_query($db, "SELECT valido, descuento FROM cupones WHERE codigo = '$codigo';");
+	$row = mysqli_fetch_assoc($resultado);
+	if ($row) {
+		$activo = $row['valido'];
+		$actu = mysqli_query($db, "UPDATE cupones SET valido = 0 where codigo = '$codigo';");
+		if ($activo == 1) {
+			$result=mysqli_query($db,"UPDATE cliente SET descuento = " . $row['descuento'] . " where id=" . $_SESSION['id']);
+			if ($result) {
+				$_SESSION['descuento'] = $row['descuento'];
+			}
+		}
+	} else {
+		$activo = -1;
+	}
+	return $activo;
 }
 ?>
