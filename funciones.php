@@ -1,5 +1,5 @@
 <?php 
-function comprobar ($n,$ap1,$u,$p,$e,$ap2,$t,$db){
+function comprobar ($n,$ap1,$u,$p,$e,$ap2,$t, $nombre_mascota, $especie, $tamano, $db){
 	$array = array();
 	
 	//usuario
@@ -32,7 +32,7 @@ function comprobar ($n,$ap1,$u,$p,$e,$ap2,$t,$db){
 		//Cogemos el id
 		$aps=$ap1." ".$ap2;
 		//Agregamos el 1
-		$sql="INSERT INTO cliente (nombre,apellidos,telefono,email) VALUES('$n','$aps','$t','$e')";
+		$sql="INSERT INTO cliente (nombre,apellidos,telefono,email, descuento) VALUES('$n','$aps','$t','$e',0)";
 		$resultt=mysqli_query($db,$sql);
 		//Cogemos el id 
 		$result=mysqli_query($db,"SELECT max(id) from cliente");
@@ -41,12 +41,14 @@ function comprobar ($n,$ap1,$u,$p,$e,$ap2,$t,$db){
 		//Agregamos el 2
 		$sqll="INSERT INTO admin(usuario,password,id) VALUES ('$u','$p','$id')";
 		$resulttt=mysqli_query($db,$sqll);
-		if($resultt&&$resulttt){
+        $sql_mascota = "INSERT INTO animal (id, nombre, especie, tamano) VALUES ('$id', '$nombre_mascota', '$especie', '$tamano')";
+		$resultado = mysqli_query($db, $sql_mascota);
+		if($resultt&&$resulttt && $resultado){
 			header('Refresh: 3; URL=./entra.php');
 			?><script>$.confirm({
 				boxWidth: '30%',
 				useBootstrap: false,
-				theme: 'light',
+				theme: 'dark',
 				icon: 'fa fa-paw',
 				title: 'Usuario registrado!',
 				content: 'Se ha creado con éxito tu registro.'
@@ -73,7 +75,7 @@ function loguear($u,$p,$db){
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 	  $count = mysqli_num_rows($result);
 	  if($count == 1) {
-		$sql2 = "SELECT nombre, apellidos, telefono, email FROM cliente WHERE id = " . $row['id'];
+		$sql2 = "SELECT nombre, apellidos, telefono, email, descuento FROM cliente WHERE id = " . $row['id'];
 	  	$result2 = mysqli_query($db,$sql2);
 	  	$row2 = mysqli_fetch_array($result2,MYSQLI_ASSOC);
 	  }
@@ -85,6 +87,10 @@ function loguear($u,$p,$db){
 		 $_SESSION['apellidos'] = $row2['apellidos'];
 		 $_SESSION['telefono'] = $row2['telefono'];
 		 $_SESSION['email'] = $row2['email'];
+		 $_SESSION['descuento'] = $row2['descuento'];
+		 $sqlMascotas = mysqli_query($db, "SELECT count(*) from animal where id=".$row['id']);
+		 $numMascotas = mysqli_fetch_assoc($sqlMascotas);
+		 $_SESSION['numMascotas'] = $numMascotas['count(*)'];
 		 $x=true;
       }else {
 		$x=false;
@@ -101,28 +107,63 @@ function loguear($u,$p,$db){
       }
 	  return $x;  
 }
-function crearCita($db,$m,$servicio,$p,$fecha,$id){
+function crearCita($db,$m,$servicio,$p,$fecha,$h,$min,$id, $precio){
 	//No valido la mascota por que enteoria sale de la base de datos
 	$tipo=array("cortar","limpiar","dia","horas");
 	$sql="SELECT idAnimal from animal where id='$id' and nombre='$m'";
 	$result=mysqli_query($db,$sql);
+	$row=mysqli_fetch_assoc($result);
+	$idAnimal=$row['idAnimal'];
+	
 	$r=mysqli_query($db,"SELECT numero from precios where precio=$p");
 	$rrow=mysqli_fetch_assoc($r);
 	$idPrecio=$rrow['numero'];
 	//No compruebo result por que el nombre se saca de la base de datos, es decir, que va a estar si o si
-	$row=mysqli_fetch_assoc($result);
-	$idAnimal=$row['idAnimal'];
-	$cita=$tipo[$servicio-1];
-	//var_dump($cita);
 	$arrayFecha=explode('/',$fecha);
-	$nFecha=$arrayFecha[2]."-".$arrayFecha[1]."-".$arrayFecha[0];
-	$fechaFinal=date("Y-m-d",strtotime($nFecha));
+	$nFecha=$arrayFecha[2]."-".$arrayFecha[1]."-".$arrayFecha[0]." ".$h.":".$min.":00";
+	$fechaFinal=date("Y-m-d H:i:s",strtotime($nFecha));
+	if ($servicio<=2){
+		$f_f=null;
+	}else {
+		if ($servicio==3){
+			if ($p>=200){
+				$f_f=date("Y-m-d H:i:s",strtotime($fechaFinal."+ 1 month"));
+			}else{
+				$f_f=strtotime('+6 hour' ,strtotime($fechaFinal));
+				$f_f=date( 'Y-m-d H:i:s', $f_f);
+			}
+		}else{
+			if ($p==6){
+				$f_f=strtotime('+1 hour' ,strtotime($fechaFinal));
+				$f_f=date( 'Y-m-d H:i:s', $f_f);
+			}else if ($p==8){
+				$f_f=strtotime('+2 hour' ,strtotime($fechaFinal));
+				$f_f=date( 'Y-m-d H:i:s', $f_f);
+			}else if ($p==10){
+				$f_f=strtotime('+3 hour' ,strtotime($fechaFinal));
+				$f_f=date( 'Y-m-d H:i:s', $f_f);
+			}else if ($p==12){
+				$f_f=strtotime('+4 hour' ,strtotime($fechaFinal));
+				$f_f=date( 'Y-m-d H:i:s', $f_f);
+			}else {
+				$f_f=strtotime('+5 hour' ,strtotime($fechaFinal));
+				$f_f=date( 'Y-m-d H:i:s', $f_f);
+			}
+		}
+	}
+	$cita=$tipo[$servicio-1];
 	//El campo tamano lo dejo por si en algun momento lo validamos mas a fondo
 	//Ahora que tenemos toda la informacion vamos a hacer la cita;
-	$sq="INSERT INTO cita (idAnimal,tipoServicio,fecha,precio,idPrecio) VALUES ('$idAnimal','$cita','$fechaFinal','$p',$idPrecio)";
+	if ($f_f == null) {
+		$sq="INSERT INTO cita (idAnimal,tipoServicio,fecha,fecha_fin,precio,idPrecio) VALUES ('$idAnimal','$cita','$fechaFinal',NULL,'$precio',$idPrecio)";
+	} else {
+		$sq="INSERT INTO cita (idAnimal,tipoServicio,fecha,fecha_fin,precio,idPrecio) VALUES ('$idAnimal','$cita','$fechaFinal','$f_f','$precio',$idPrecio)";
+	}
 	$resul=mysqli_query($db,$sq);
 	//Comprobar
-	if ($result){
+	if ($resul){
+		$_SESSION['descuento'] = 0;
+		$resultado = mysqli_query($db,"UPDATE cliente SET descuento = " . $_SESSION['descuento'] . " where id=" . $_SESSION['id']);
 		$comprobar=true;
 	}else $comprobar=false;
 	return $comprobar;
@@ -150,6 +191,7 @@ function newPassword($db,$new,$id){
 function deleteAnimal($db,$id,$nombre){
 	$result=mysqli_query($db,"DELETE from animal where id=$id and nombre='$nombre'");
 	if ($result){
+		$_SESSION['numMascotas'] = ($_SESSION['numMascotas'] - 1);
 		$comprobar=true;
 	}else $comprobar=false;
 	return $comprobar;
@@ -164,6 +206,7 @@ function newAnimal($db,$name,$animal,$altura,$id){
 		$comprobar=false;
 	}else{
 		$resul=mysqli_query($db,"INSERT INTO animal (id,nombre,especie,tamano) VALUES ('$id','$name','$animal','$altura')");
+		$_SESSION['numMascotas'] = ($_SESSION['numMascotas'] + 1);
 		$comprobar=true;
 	} 
 	return $comprobar;
@@ -195,20 +238,23 @@ function getMascotas($db,$id){
 function mostrarCitas($db,$id){
 	$mascotas=array();
 	$animal=array();
-	$servicio=array();
-	$fecha=array();
+	$servicio=array('Jornada Completa Mensual','Media Jornada Mensual','Media jornada','Horas');
+	$servicios=array();
+	$fechai=array();
+	$fechaf=array();
 	$precio=array();
-	$fecha=date("Y-m-d");
-	$sql="SELECT cita.idAnimal,tipoServicio,fecha,precio from cita,animal where cita.idAnimal=animal.idAnimal and id=$id and fecha>$fecha";
+	$fecha=date("Y-m-d H:i:s");
+	$sql="SELECT cita.idAnimal,tipoServicio,fecha,fecha_fin,precio from cita,animal where cita.idAnimal=animal.idAnimal and id=$id and fecha>'$fecha'";
 	$result=mysqli_query($db,$sql);
-	$count=0;
+	if ($result){
 	while($row = mysqli_fetch_assoc($result)){
 			$animal[]=$row['idAnimal'];//Cambiar por el nombre antes de mostrar
-			$servicio[]=$row['tipoServicio'];//cambiar por servicio hacer despues
-			$f=date("Y-m-d H:i:s",strtotime($row['fecha']));//Esta mal
-			$fecha[$count]=$f;
+			$servicios[]=$row['tipoServicio'];
+			$f=date("Y-m-d H:i:s",strtotime($row['fecha']));
+			$fechai[]=$f;
+			$ff=date("Y-m-d H:i:s",strtotime($row['fecha_fin']));
+			$fechaf[]=$ff;
 			$precio[]=$row['precio'];
-			$count+=1;
 	}
 	foreach ($animal as $mascota){
 		$resul=mysqli_query($db,"SELECT nombre from animal where idAnimal=$mascota");
@@ -217,14 +263,31 @@ function mostrarCitas($db,$id){
 		}
 	}
 	//hacer la tabla
+	echo "Peluqueria";//Decorrar esto
 	echo "
 	<table border='1'>
-	<tr><td>Nombre</td> <td>Servicio</td> <td>Fecha</td> <td>Precio</td></tr>";
+	<tr><td>Nombre</td> <td>Servicio</td> <td>Fecha Inicio</td> <td>Precio</td></tr>";
 	foreach($mascotas as $l => $valor){
-
-	echo "<tr><td>".$valor."</td> <td>".$servicio[$l]."</td> <td>".$fecha[$l]."</td> <td>".$precio[$l].	"</td></tr>";	
+		if ($servicios[$l]=='limpiar'){$se="Baño";}else if($servicios[$l]=='cortar'){$se="Lavar y cortar";}
+		if ($fechai[$l]>$fechaf[$l]){
+			echo "<tr><td>".$valor."</td> <td>".$se."</td> <td>".$fechai[$l]."</td> <td>".$precio[$l].	"</td></tr>";	
+		}
 	}
 	echo "</table>";
+	//-----------------------------------------------------------------------------
+	echo "Guarderia";//Decorrar esto
+	echo "
+	<table border='1'>
+	<tr><td>Nombre</td> <td>Servicio</td> <td>Fecha Inicio</td> <td>Fecha Fin</td> <td>Precio</td></tr>";
+	//var_dump($mascotas);
+	foreach($mascotas as $l => $valor){
+		if ($precio[$l]>=200){if($precio[$l]==300){$i=0;}else $i=1;}else if($precio[$l]==16){$i=2;}else $i=3;
+		if ($fechai[$l]<$fechaf[$l]){
+			echo "<tr><td>".$valor."</td> <td>".$servicio[$i]."</td> <td>".$fechai[$l]."</td> <td>".$fechaf[$l]."</td> <td>".$precio[$l].	"</td></tr>";	
+		}
+	}
+	echo "</table>";
+	}else{echo "No tienes ninguna cita";}
 }
 
 function mandarMensaje($m,$db){
@@ -237,5 +300,24 @@ function mandarMensaje($m,$db){
 		$usuario=$row['usuario'];*/
 	}else $password=0;
 	return $password;
+}
+
+function comprobarCodigo($db, $codigo) {
+	//$activo = -1;
+	$resultado = mysqli_query($db, "SELECT valido, descuento FROM cupones WHERE codigo = '$codigo';");
+	$row = mysqli_fetch_assoc($resultado);
+	if ($row) {
+		$activo = $row['valido'];
+		$actu = mysqli_query($db, "UPDATE cupones SET valido = 0 where codigo = '$codigo';");
+		if ($activo == 1) {
+			$result=mysqli_query($db,"UPDATE cliente SET descuento = " . $row['descuento'] . " where id=" . $_SESSION['id']);
+			if ($result) {
+				$_SESSION['descuento'] = $row['descuento'];
+			}
+		}
+	} else {
+		$activo = -1;
+	}
+	return $activo;
 }
 ?>

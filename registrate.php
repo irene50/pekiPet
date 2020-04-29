@@ -1,11 +1,6 @@
 <?php
 include_once 'header.php';
 ?>
-<script src="http://code.jquery.com/jquery-3.3.1.js"></script>
-<link rel="stylesheet" href="includes/font-awesome-4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-<script src="includes/js/validaciones.js"></script>
 <!--<div><h1 class="titulo" align="center">Regístrate</h1></div>
   Section: Contact v.1-->
 <section class="section pb-5">
@@ -54,6 +49,22 @@ include_once 'header.php';
           <div class="md-form">
             <label for="form-tfno">Teléfono </label>
             <input type="text" name="telefono" id="form-tfno" class="form-control" placeholder="">
+          </div>
+            <div class="md-form">
+            <label for="form-nombre_mascota">Nombre de tu mascota *</label>
+            <input type="text" name="nombre_mascota" id="form-nombre_mascota" class="form-control" required placeholder="Campo obligatorio">
+          </div>
+          <div class="md-form">
+            <label for="form-especie">Especie (perro, gato, pájaro,...) *</label>
+            <input type="text" name="especie" id="form-especie" class="form-control" required placeholder="Campo obligatorio">
+          </div>
+          <div class="md-form">
+            <label for="form-tamano">Tamaño *</label>
+            <select name="tamano" id="form-tamano" class="form-control" required>
+                <option value="0">Pequeño</option>
+                <option value="1">Mediano</option>
+                <option value="2">Grande</option>
+            </select>
           </div>
           <div class="md-form">
               <br>

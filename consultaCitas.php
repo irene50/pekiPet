@@ -27,10 +27,10 @@ $id=$_SESSION['id'];
           </div>
           <br>
 
-          <!--Cargar de la bbdd una tabla con las citas desde hoy en adelante-->
+          <!--Cargar de la bbdd una tabla con las citas desde hoy en adelante
           <div class="text-center mt-4">
           <button class="btn btn-light-blue" style="background-color: aquamarine;">-</button>
-          </div>
+          </div>-->
 
         </div>
 

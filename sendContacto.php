@@ -14,11 +14,13 @@ require './PHPMailer/src/SMTP.php';
 $email_user = "pekipetguarderiacanina@gmail.com";
 $email_password = "Jilguero_8";
 $the_subject =  $_POST["form-Subject"];
-$address_to = $_POST["form-email"];
+$address_to = $_POST["email"];
 $from_name = $_POST["form-name"];
 
 $emailCliente = new PHPMailer(true);
+$emailCliente -> CharSet = 'UTF-8';
 $emailPeki = new PHPMailer(true);
+$emailPeki -> CharSet = 'UTF-8';
 
 // ---------- datos de la cuenta de Gmail -------------------------------
 $emailCliente->Username = $email_user;
@@ -48,7 +50,7 @@ $emailPeki->Subject = $the_subject;
 
 $mensaje="Mensaje del formulario de contacto de pekipet ";
 $mensaje.= "<br>Nombre: ". $_POST['form-name'];
-$mensaje.= "<br>Email: ".$_POST['form-email'];
+$mensaje.= "<br>Email: ".$_POST['email'];
 $mensaje.= "<br>Mensaje: \n".$_POST['form-text'];
 
 $emailPeki->Body = $mensaje;

@@ -30,20 +30,8 @@ include_once 'funciones.php';
 
           <!--Body-->
           <div class="md-form">
-            <label for="form-nombre">Nombre </label>
-            <input type="text" name="nombre" id="form-nombre" class="form-control" required value="<?php echo($_SESSION['nombre']) ?>">
-          </div>
-          <div class="md-form">
-            <label for="form-apellidos">Apellidos </label>
-            <input type="text" name="apellidos" id="form-apellidos" class="form-control" required value="<?php echo($_SESSION['apellidos']) ?>">
-          </div>
-          <div class="md-form">
             <label for="form-tfno">Teléfono </label>
             <input type="text" name="telefono" id="form-tfno" class="form-control" required value="<?php if ($_SESSION['telefono'] !== '0') echo($_SESSION['telefono']); ?>">
-          </div>
-          <div class="md-form">
-            <label for="form-email">Email </label>
-            <input type="text" name="email" id="form-email" class="form-control" required value="<?php echo($_SESSION['email']) ?>">
           </div>
           <!--Esto terminaria siendo un desplegable con las mascotas del cliente-->
           <div class="md-form">
@@ -81,28 +69,37 @@ include_once 'funciones.php';
             <div class="row">
               <div class="col-6">
                 <select name="hora" id="hora" class="form-control">
-                  <option value="0">8</option>
-                  <option value="1">9</option>
-                  <option value="2">10</option>
-                  <option value="3">11</option>
-                  <option value="4">12</option>
-                  <option value="5">13</option>
-                  <option value="6">14</option>
-                  <option value="7">15</option>
-                  <option value="8">16</option>
-                  <option value="9">17</option>
-                  <option value="10">18</option>
-                  <option value="11">19</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
                 </select>
               </div>
               <div class="col-6">
                 <select name="minutos" id="minutos" class="form-control">
-                  <option value="0">00</option>
-                  <option value="1">30</option>
+                  <option value="00">00</option>
+                  <option value="30">30</option>
                 </select>
               </div>
             </div>
           </div>
+          <div class="md-form">
+            <label for="observaciones">Observaciones </label>
+            <textarea type="text" name="observaciones" id="observaciones" class="form-control"></textarea>
+          </div>
+          <p align="center">* Para reservar cita para el mismo dia, llame por teléfono para comprobar la disponibilidad.</p>
+          <p align="center">91 567 4589</p>
+          <input type="hidden" name="tipo-servicio" id="tipo-servicio" value = ""/>
+          <input type="hidden" name="descuento" id="descuento" class="form-control" value="<?php echo ($_SESSION['descuento']); ?>">
+          <input type="hidden" name="anterior" id="anterior" class="form-control" value="0">
           <div class="text-center mt-4">
           <button class="btn btn-light-blue" id="cita" style="background-color: aquamarine;">Pedir cita</button>
           </div>
@@ -143,8 +140,14 @@ include_once 'funciones.php';
 ?>
 <!-- calendario -->
 <script type="text/javascript">
+$(document).ready(function() { 
+		  $( "#formtiempo2" ).on( "change", function(){
+        var tipoServicio=$('#formtiempo2 option:selected').html();
+        $('#tipo-servicio').val(tipoServicio);
+      }); 
+  	}); 
 			$(function() { 
-				$("#form-fecha").datepicker();
+        $("#form-fecha").datepicker({minDate: 1, beforeShowDay: $.datepicker.noWeekends});
 			});
 </script>
 <?php
