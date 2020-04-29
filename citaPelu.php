@@ -36,7 +36,9 @@
 
 	/*mail*/
 	$emailCliente = new PHPMailer(true);
+	$emailCliente -> CharSet = 'UTF-8';
 	$emailPeki = new PHPMailer(true);
+	$emailPeki -> CharSet = 'UTF-8';
 	/**/
 
 	// ---------- datos de la cuenta de Gmail -------------------------------
