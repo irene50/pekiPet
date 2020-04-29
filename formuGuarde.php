@@ -55,7 +55,9 @@ include_once 'funciones.php';
             <select name="tiempo2" id="formtiempo2" class="form-control">
                 <option value="0">-</option>
             </select>
+            <input type="hidden" name="tipo-servicio" id="tipo-servicio" value = ""/>
           </div>
+         
           <div class="md-form">
             <label for="formprecio">Precio estimado en euros</label>
             <input type="text" name="precio" id="formprecio" class="form-control" value="0">
@@ -137,6 +139,13 @@ include_once 'funciones.php';
 ?>
 <!-- calendario -->
 <script type="text/javascript">
+     $(document).ready(function() { 
+		  $( "#formtiempo2" ).on( "change", function(){
+        var tipoServicio=$('#formtiempo2 option:selected').html();
+        $('#tipo-servicio').val(tipoServicio);
+      }); 
+  	}); 
+
 			$(function() { 
 				$("#form-fecha").datepicker({minDate: 0 });
 			});

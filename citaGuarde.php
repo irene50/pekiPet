@@ -22,7 +22,7 @@ session_start();
 	/**/
 
 	$m=$_POST['mascota'];
-	$servicio=$_POST['tiempo2'];
+	$servicio=$_POST['tipo-servicio'];
 	$servicio2=$_POST['tiempo'];
 	$p=$_POST['anterior'];
 	$precio = $_POST['precio'];
@@ -33,7 +33,9 @@ session_start();
 
 	/*mail*/
 	$emailCliente = new PHPMailer(true);
+	$emailCliente -> CharSet = 'UTF-8';
 	$emailPeki = new PHPMailer(true);
+	$emailPeki -> CharSet = 'UTF-8';
 	/**/
 
 	// ---------- datos de la cuenta de Gmail -------------------------------

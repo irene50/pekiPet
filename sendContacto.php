@@ -18,7 +18,9 @@ $address_to = $_POST["email"];
 $from_name = $_POST["form-name"];
 
 $emailCliente = new PHPMailer(true);
+$emailCliente -> CharSet = 'UTF-8';
 $emailPeki = new PHPMailer(true);
+$emailPeki -> CharSet = 'UTF-8';
 
 // ---------- datos de la cuenta de Gmail -------------------------------
 $emailCliente->Username = $email_user;
