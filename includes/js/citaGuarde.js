@@ -45,34 +45,51 @@ function citas() {
         document.getElementById('formprecio').value = 0;
    	} 
        document.getElementById('formtiempo2').options[0].selected = true;
+       //Necesario para cambiar el hidden con la carga del combo
+       document.getElementById('tipo-servicio').value=varSelect1[0];
 }
 
 function precio() {
     var valor = document.getElementById('formtiempo2').value;
+    var descuento = parseInt(document.getElementById('descuento').value);
+    var valor2 = document.getElementById('form-tiempo').value;
+    if (valor == 0 && valor2 == 1) {
+        valor = 'Jornada completa mensual';
+    } if (valor == 0 && valor2 == 2) {
+        valor = '1 hora';
+    }
     switch (valor) {
         case 'Jornada completa mensual':
-            document.getElementById('formprecio').value = 300;
+            document.getElementById('formprecio').value = 300 - (300*(descuento/100));
+            document.getElementById('anterior').value = 300;
           break;
         case 'Media jornada mensual':
-            document.getElementById('formprecio').value = 200;
+            document.getElementById('formprecio').value = 200 - (200*(descuento/100));
+            document.getElementById('anterior').value = 20;
             break;
         case 'Media jornada':
-            document.getElementById('formprecio').value = 16;
+            document.getElementById('formprecio').value = 16 - (16*(descuento/100));
+            document.getElementById('anterior').value = 16;
           break;
         case '1 hora':
-            document.getElementById('formprecio').value = 6;
+            document.getElementById('formprecio').value = 6 - (6*(descuento/100));
+            document.getElementById('anterior').value = 6;
             break;
         case '2 horas':
-            document.getElementById('formprecio').value = 8;
+            document.getElementById('formprecio').value = 8 - (8*(descuento/100));
+            document.getElementById('anterior').value = 8;
             break;
         case '3 horas':
-            document.getElementById('formprecio').value = 10;
+            document.getElementById('formprecio').value = 10 - (10*(descuento/100));
+            document.getElementById('anterior').value = 10;
             break;
         case '4 horas':
-            document.getElementById('formprecio').value = 12;
+            document.getElementById('formprecio').value = 12 - (12*(descuento/100));
+            document.getElementById('anterior').value = 12;
             break;
         case '5 horas':
-            document.getElementById('formprecio').value = 14;
+            document.getElementById('formprecio').value = 14 - (14*(descuento/100));
+            document.getElementById('anterior').value = 14;
             break;
         /*default:
             document.getElementById('formprecio').value = 0;
@@ -82,10 +99,13 @@ function precio() {
 
 function precio2() {
     var valor = document.getElementById('form-tiempo').value;
+    var descuento = document.getElementById('descuento').value;
     if (valor == 1) {
-        document.getElementById('formprecio').value = 300;
+        document.getElementById('formprecio').value = 300 - (300*(descuento/100));
+        document.getElementById('anterior').value = 300;
     } else if (valor == 2) {
-        document.getElementById('formprecio').value = 6;
+        document.getElementById('formprecio').value = 6 - (6*(descuento/100));
+        document.getElementById('anterior').value = 6;
     } else {
         document.getElementById('formprecio').value = 0;
     }

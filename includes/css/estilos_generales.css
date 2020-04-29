@@ -69,6 +69,12 @@ a.dropdown-item{
     margin-top: 3%;
 }*/
 
+/*datepiker*/
+.ui-widget.ui-widget-content {
+    border: 1px solid #aaaaaa;
+    background: cadetblue;
+    color: #222222;
+}
 
 /*footer*/
 footer{
