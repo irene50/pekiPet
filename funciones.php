@@ -107,7 +107,7 @@ function loguear($u,$p,$db){
       }
 	  return $x;  
 }
-function crearCita($db,$m,$servicio,$p,$fecha,$h,$min,$id, $precio){
+function crearCita($db,$m,$servicio,$p,$fecha,$h,$min,$id,$precio,$tlf,$ob){
 	//No valido la mascota por que enteoria sale de la base de datos
 	$tipo=array("cortar","limpiar","dia","horas");
 	$sql="SELECT idAnimal from animal where id='$id' and nombre='$m'";
@@ -151,13 +151,15 @@ function crearCita($db,$m,$servicio,$p,$fecha,$h,$min,$id, $precio){
 			}
 		}
 	}
+	$horaEntrega = date("H:i", strtotime($f_f));
+	if ($horaEntrega<="20:00"){
 	$cita=$tipo[$servicio-1];
 	//El campo tamano lo dejo por si en algun momento lo validamos mas a fondo
 	//Ahora que tenemos toda la informacion vamos a hacer la cita;
 	if ($f_f == null) {
-		$sq="INSERT INTO cita (idAnimal,tipoServicio,fecha,fecha_fin,precio,idPrecio) VALUES ('$idAnimal','$cita','$fechaFinal',NULL,'$precio',$idPrecio)";
+		$sq="INSERT INTO cita (idAnimal,tipoServicio,fecha,fecha_fin,precio,idPrecio,telefono,comentario) VALUES ('$idAnimal','$cita','$fechaFinal',NULL,'$precio',$idPrecio,'$tlf','$ob')";
 	} else {
-		$sq="INSERT INTO cita (idAnimal,tipoServicio,fecha,fecha_fin,precio,idPrecio) VALUES ('$idAnimal','$cita','$fechaFinal','$f_f','$precio',$idPrecio)";
+		$sq="INSERT INTO cita (idAnimal,tipoServicio,fecha,fecha_fin,precio,idPrecio,telefono,comentario) VALUES ('$idAnimal','$cita','$fechaFinal','$f_f','$precio',$idPrecio,'$tlf','$ob')";
 	}
 	$resul=mysqli_query($db,$sq);
 	//Comprobar
@@ -165,6 +167,7 @@ function crearCita($db,$m,$servicio,$p,$fecha,$h,$min,$id, $precio){
 		$_SESSION['descuento'] = 0;
 		$resultado = mysqli_query($db,"UPDATE cliente SET descuento = " . $_SESSION['descuento'] . " where id=" . $_SESSION['id']);
 		$comprobar=true;
+	}else $comprobar=false;
 	}else $comprobar=false;
 	return $comprobar;
 }
