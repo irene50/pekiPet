@@ -150,6 +150,6 @@ include_once 'footer.php';
   	}); 
 
 			$(function() { 
-				$("#form-fecha").datepicker({minDate: 0 });
+				$("#form-fecha").datepicker({minDate: 1, beforeShowDay: $.datepicker.noWeekends});
 			});
 </script>

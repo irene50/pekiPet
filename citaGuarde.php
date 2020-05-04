@@ -99,7 +99,7 @@ session_start();
 	//Insertar alerta de que se ha pedido su cita y volver al 
 	if ($servicio2 ==! 0) {
 		$servicio2+=2;
-		if (crearCita($db,$m,$servicio2,$p,$fecha,$h,$min,$id,$precio,$tlf,$ob)) {
+		if (crearCita($db,$m,$servicio2,$p,$fecha,$h,$min,$id,$precio,$tlf,$ob) == 1) {
 			header('Refresh: 3; URL=./welcome.php');
 			?><script>$.confirm({
 				boxWidth: '30%',
@@ -114,7 +114,7 @@ session_start();
 			$emailPeki->Send();
 			$emailCliente->IsHTML(true);
 			$emailCliente->Send();
-		} else {
+		} else if (crearCita($db,$m,$servicio2,$p,$fecha,$h,$min,$id,$precio,$tlf,$ob) == 2){
 			header('Refresh: 3; URL=./welcome.php');
 			?><script>$.confirm({
 				boxWidth: '30%',
@@ -123,6 +123,17 @@ session_start();
 				icon: 'fa fa-paw',
 				title: 'Fallo al reservar',
 				content: 'No hemos podido reservar la cita, inténtelo de nuevo más tarde'
+			});
+			</script><?php
+		} else {
+			header('Refresh: 3; URL=./welcome.php');
+			?><script>$.confirm({
+				boxWidth: '30%',
+				useBootstrap: false,
+				theme: 'dark',
+				icon: 'fa fa-paw',
+				title: 'Fallo al reservar',
+				content: 'No puede seleccionar una hora en la que el fin del servicio sea mas de las 20:00'
 			});
 			</script><?php
 		}

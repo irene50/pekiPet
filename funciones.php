@@ -115,9 +115,9 @@ function crearCita($db,$m,$servicio,$p,$fecha,$h,$min,$id,$precio,$tlf,$ob){
 	$row=mysqli_fetch_assoc($result);
 	$idAnimal=$row['idAnimal'];
 	
-	$r=mysqli_query($db,"SELECT numero from precios where precio=$p");
+	/*$r=mysqli_query($db,"SELECT numero from precios where precio=$p");
 	$rrow=mysqli_fetch_assoc($r);
-	$idPrecio=$rrow['numero'];
+	$idPrecio=$rrow['numero'];*/
 	//No compruebo result por que el nombre se saca de la base de datos, es decir, que va a estar si o si
 	$arrayFecha=explode('/',$fecha);
 	$nFecha=$arrayFecha[2]."-".$arrayFecha[1]."-".$arrayFecha[0]." ".$h.":".$min.":00";
@@ -152,23 +152,23 @@ function crearCita($db,$m,$servicio,$p,$fecha,$h,$min,$id,$precio,$tlf,$ob){
 		}
 	}
 	$horaEntrega = date("H:i", strtotime($f_f));
-	if ($horaEntrega<="20:00"){
+	if ($horaEntrega<="20:00" && $horaEntrega>="08:00"){
 	$cita=$tipo[$servicio-1];
 	//El campo tamano lo dejo por si en algun momento lo validamos mas a fondo
 	//Ahora que tenemos toda la informacion vamos a hacer la cita;
 	if ($f_f == null) {
-		$sq="INSERT INTO cita (idAnimal,tipoServicio,fecha,fecha_fin,precio,idPrecio,telefono,comentario) VALUES ('$idAnimal','$cita','$fechaFinal',NULL,'$precio',$idPrecio,'$tlf','$ob')";
+		$sq="INSERT INTO cita (idAnimal,tipoServicio,fecha,fecha_fin,precio,telefono,comentario) VALUES ('$idAnimal','$cita','$fechaFinal',NULL,'$precio','$tlf','$ob')";
 	} else {
-		$sq="INSERT INTO cita (idAnimal,tipoServicio,fecha,fecha_fin,precio,idPrecio,telefono,comentario) VALUES ('$idAnimal','$cita','$fechaFinal','$f_f','$precio',$idPrecio,'$tlf','$ob')";
+		$sq="INSERT INTO cita (idAnimal,tipoServicio,fecha,fecha_fin,precio,telefono,comentario) VALUES ('$idAnimal','$cita','$fechaFinal','$f_f','$precio','$tlf','$ob')";
 	}
 	$resul=mysqli_query($db,$sq);
 	//Comprobar
 	if ($resul){
 		$_SESSION['descuento'] = 0;
 		$resultado = mysqli_query($db,"UPDATE cliente SET descuento = " . $_SESSION['descuento'] . " where id=" . $_SESSION['id']);
-		$comprobar=true;
-	}else $comprobar=false;
-	}else $comprobar=false;
+		$comprobar=1;
+	}else $comprobar=2;
+	}else $comprobar=3;
 	return $comprobar;
 }
 //Cambiar Password
