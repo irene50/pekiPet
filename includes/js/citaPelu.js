@@ -1,7 +1,7 @@
 window.onload = function() {
     //document.primero.nombre.readOnly = true;
     //document.primero.apellidos.readOnly = true;
-    //document.primero.email.readOnly = true;
+    document.primero.fecha.readOnly = true;
     document.primero.precio.readOnly = true;
     //document.primero.onsubmit = enviar;
 }

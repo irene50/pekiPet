@@ -1,7 +1,7 @@
 window.onload = function() {
     //document.primero.nombre.readOnly = true;
     //document.primero.apellidos.readOnly = true;
-    //document.primero.email.readOnly = true;
+    document.primero.fecha.readOnly = true;
     document.primero.precio.readOnly = true;
     //document.primero.onsubmit = enviar;
 }
@@ -45,7 +45,7 @@ function citas() {
         document.getElementById('formprecio').value = 0;
    	} 
        document.getElementById('formtiempo2').options[0].selected = true;
-       //Necesario para cambiar el hidden con la carga del combo
+	//Necesario para cambiar el hidden con la carga del combo
        document.getElementById('tipo-servicio').value=varSelect1[0];
 }
 
@@ -65,7 +65,7 @@ function precio() {
           break;
         case 'Media jornada mensual':
             document.getElementById('formprecio').value = 200 - (200*(descuento/100));
-            document.getElementById('anterior').value = 20;
+            document.getElementById('anterior').value = 200;
             break;
         case 'Media jornada':
             document.getElementById('formprecio').value = 16 - (16*(descuento/100));
