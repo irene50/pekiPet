@@ -96,8 +96,6 @@ include_once 'funciones.php';
             <label for="observaciones">Observaciones </label>
             <textarea type="text" name="observaciones" id="observaciones" class="form-control"></textarea>
           </div>
-          <p align="center">* Para reservar cita para el mismo dia, llame por teléfono para comprobar la disponibilidad.</p>
-          <p align="center">91 567 4589</p>
           <input type="hidden" name="descuento" id="descuento" class="form-control" value="<?php echo ($_SESSION['descuento']); ?>">
           <input type="hidden" name="anterior" id="anterior" class="form-control" value="0">
           <div class="text-center mt-4">

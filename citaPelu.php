@@ -21,7 +21,7 @@
 	$address_to = $_SESSION["email"];
 	$from_name = $_SESSION["nombre"];
 	/**/
-
+	$tlf=$_POST['telefono'];
 	$m=$_POST['mascota'];
 	$servicio=$_POST['tipo-servicio'];
 	$servicio2=$_POST['tiempo'];
@@ -30,6 +30,7 @@
 	$fecha=$_POST['fecha'];
 	$h=$_POST['hora'];
 	$min=$_POST['minutos'];
+	$ob=$_POST['observaciones'];
 	$id=$_SESSION['id'];
 
 	
@@ -101,7 +102,7 @@
 	
 	//Insertar alerta de que se ha pedido su cita y volver al 
 	if ($servicio2 ==! 0) {
-		if (crearCita($db,$m,$servicio2,$p,$fecha,$h,$min,$id, $precio)) {
+		if (crearCita($db,$m,$servicio2,$p,$fecha,$h,$min,$id,$precio,$tlf,$ob)) {
 			header('Refresh: 3; URL=./welcome.php');
 			?><script>$.confirm({
 				boxWidth: '30%',

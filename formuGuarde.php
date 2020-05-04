@@ -55,7 +55,9 @@ include_once 'funciones.php';
             <select name="tiempo2" id="formtiempo2" class="form-control">
                 <option value="0">-</option>
             </select>
+            <input type="hidden" name="tipo-servicio" id="tipo-servicio" value = ""/>
           </div>
+         
           <div class="md-form">
             <label for="formprecio">Precio estimado en euros</label>
             <input type="text" name="precio" id="formprecio" class="form-control" value="0">
@@ -95,9 +97,6 @@ include_once 'funciones.php';
             <label for="observaciones">Observaciones </label>
             <textarea type="text" name="observaciones" id="observaciones" class="form-control"></textarea>
           </div>
-          <p align="center">* Para reservar cita para el mismo dia, llame por teléfono para comprobar la disponibilidad.</p>
-          <p align="center">91 567 4589</p>
-          <input type="hidden" name="tipo-servicio" id="tipo-servicio" value = ""/>
           <input type="hidden" name="descuento" id="descuento" class="form-control" value="<?php echo ($_SESSION['descuento']); ?>">
           <input type="hidden" name="anterior" id="anterior" class="form-control" value="0">
           <div class="text-center mt-4">
@@ -140,14 +139,15 @@ include_once 'funciones.php';
 ?>
 <!-- calendario -->
 <script type="text/javascript">
-$(document).ready(function() { 
+     $(document).ready(function() { 
 		  $( "#formtiempo2" ).on( "change", function(){
         var tipoServicio=$('#formtiempo2 option:selected').html();
         $('#tipo-servicio').val(tipoServicio);
       }); 
   	}); 
+
 			$(function() { 
-        $("#form-fecha").datepicker({minDate: 1, beforeShowDay: $.datepicker.noWeekends});
+				$("#form-fecha").datepicker({minDate: 1, beforeShowDay: $.datepicker.noWeekends});
 			});
 </script>
 <?php
