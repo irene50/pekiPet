@@ -69,7 +69,7 @@ session_start();
 	/*$emailPeki->Subject = $the_subject;	*/
 	$emailPeki->Subject = "Cita guarderia";
 
-	$mensaje="Nueva cita guarderia ";
+	$mensaje="Nueva cita guardería ";
 	$mensaje.= "<br>Nombre del dueño: ". $from_name;
 	$mensaje.= "<br>Email: ".$_SESSION['email'];
 	$mensaje.= "<br>Nombre mascota: ".$m;
