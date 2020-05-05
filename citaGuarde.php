@@ -68,7 +68,7 @@ session_start();
 	/*$emailPeki->Subject = $the_subject;	*/
 	$emailPeki->Subject = "Cita guarderia";
 
-	$mensaje="Nueva cita guarderia ";
+	$mensaje="Nueva cita guardería ";
 	$mensaje.= "<br>Nombre: ". $from_name;
 	$mensaje.= "<br>Email: ".$_SESSION['email'];
 	$mensaje.= "<br>Nombre mascota: ".$m;
@@ -90,7 +90,7 @@ session_start();
 						   <p>Hora: $h:$min</p>
 						   <p>Servicio: $servicio</p>
 						   <p>Precio estimado: $precio €</p>
-						   <p>Para cualquier modificación o anulación de la cita, llámenos al telefono: xxxxxxxxx</p>
+						   <p>Para cualquier modificación o anulación de la cita, llámenos al telefono: + 34 91 567 4589</p>
 	 						<b>Gracias!</b>";
 	
 
