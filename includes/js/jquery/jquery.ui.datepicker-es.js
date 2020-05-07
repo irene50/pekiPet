@@ -18,6 +18,8 @@ jQuery(function($){
 		firstDay: 1,
 		isRTL: false,
 		showMonthAfterYear: false,
+		showOtherMonths: true,
+		selectOtherMonths: true,
 		yearSuffix: ''};
 	$.datepicker.setDefaults($.datepicker.regional['es']);
 });
