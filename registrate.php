@@ -1,7 +1,7 @@
 <?php
 include_once 'header.php';
 ?>
-<script src="./includes/js/validaciones.js"></script>
+<script src="includes/js/validaciones.js"></script>
 <!--<div><h1 class="titulo" align="center">Regístrate</h1></div>
   Section: Contact v.1-->
 
