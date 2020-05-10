@@ -124,7 +124,7 @@ function precio2() {
 }
 
 function enviar() {
-  var vblEnviar = false;
+  var vblEnviar = true;
 
   var vTelefono = document.primero.telefono.value.trim();
 
