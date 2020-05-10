@@ -44,7 +44,8 @@ function comprobar($n, $ap1, $u, $p, $e, $ap2, $t, $nombre_mascota, $especie, $t
     $sql_mascota = "INSERT INTO animal (id, nombre, especie, tamano) VALUES ('$id', '$nombre_mascota', '$especie', '$tamano')";
     $resultado = mysqli_query($db, $sql_mascota);
     if ($resultt && $resulttt && $resultado) {
-      header('Refresh: 3; URL=./entra.php');
+      loguear($u, $p, $db);
+      header('Refresh: 3; URL=./welcome.php');
 ?><script>
         $.confirm({
           boxWidth: '30%',
