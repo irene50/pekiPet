@@ -102,7 +102,6 @@ $emailCliente->Body = "<p>Nombre del dueño: $from_name</p>
 //Insertar alerta de que se ha pedido su cita y volver al 
 if ($servicio2 == !0) {
   if (crearCita($db, $m, $servicio2, $p, $fecha, $h, $min, $id, $precio, $tlf, $ob) == 1) {
-    echo (crearCita($db, $m, $servicio2, $p, $fecha, $h, $min, $id, $precio, $tlf, $ob));
     header('Refresh: 3; URL=./welcome.php');
 ?><script>
       $.confirm({
