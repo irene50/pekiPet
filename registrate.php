@@ -82,9 +82,9 @@ include_once 'header.php';
             <div class="md-form">
               <label for="form-tamano">Tamaño</label>
               <select name="tamano" id="form-tamano" class="form-control" required>
-                <option value="0">Pequeño</option>
-                <option value="1">Mediano</option>
-                <option value="2">Grande</option>
+                <option value="pequeno">Pequeño</option>
+                <option value="mediano">Mediano</option>
+                <option value="grande">Grande</option>
               </select>
             </div>
             <div class="md-form">
