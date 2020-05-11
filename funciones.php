@@ -1,3 +1,5 @@
+
+
 <?php
 function comprobar($n, $ap1, $u, $p, $e, $ap2, $t, $nombre_mascota, $especie, $tamano, $db)
 {
@@ -286,10 +288,10 @@ function comprobar($n, $ap1, $u, $p, $e, $ap2, $t, $nombre_mascota, $especie, $t
                 }
               }
               //hacer la tabla
-              echo "Peluqueria"; //Decorrar esto
+              echo "<p style='margin-top: 4%; font-size:1.4em; text-align:center; background: rgba(183, 235, 23, 0.50);'><b>Peluquería</b></p>"; //Decorrar esto
               echo "
-	<table border='1'>
-	<tr><td>Nombre</td> <td>Servicio</td> <td>Fecha Inicio</td> <td>Precio</td></tr>";
+	<table class='table table-striped'>
+	<tr><th>Nombre</th> <th>Servicio</th> <th>Fecha Inicio</th> <th>Precio</th></tr>";
               foreach ($mascotas as $l => $valor) {
                 if ($servicios[$l] == 'limpiar') {
                   $se = "Baño";
@@ -302,10 +304,10 @@ function comprobar($n, $ap1, $u, $p, $e, $ap2, $t, $nombre_mascota, $especie, $t
               }
               echo "</table>";
               //-----------------------------------------------------------------------------
-              echo "Guarderia"; //Decorrar esto
+              echo "<p style='margin-top: 4%; font-size:1.4em; text-align:center; background:rgba(183, 235, 23, 0.50);'><b>Guardería</b></p>"; //Decorrar esto
               echo "
-	<table border='1'>
-	<tr><td>Nombre</td> <td>Servicio</td> <td>Fecha Inicio</td> <td>Fecha Fin</td> <td>Precio</td></tr>";
+	<table class='table table-striped'>
+	<tr><th>Nombre</th> <th>Servicio</th> <th>Fecha Inicio</th> <th>Fecha Fin</th> <th>Precio</th></tr>";
               //var_dump($mascotas);
               foreach ($mascotas as $l => $valor) {
                 if ($precio[$l] >= 200) {

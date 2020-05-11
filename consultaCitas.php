@@ -17,11 +17,11 @@ $id=$_SESSION['id'];
 
       <!--Form with header-->
       <form name="primero" action="" method = "post">
-      <div class="card formu">
+      <div class="card consultarTable  table-responsive" >
 
-        <div class="card-body ">
+        <div class="card-body">
           <!--Header-->
-          <div class="form-header blue accent-1">
+          <div class="form-header blue accent-1 table">
             <h3 align="center"><i class="fa fa-paw"></i> Consultar citas: <i class="fa fa-paw"></i></h3>
             <?php mostrarCitas($db,$id);?>
           </div>
