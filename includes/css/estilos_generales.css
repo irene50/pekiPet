@@ -235,12 +235,16 @@ div.social > ul li img {
 }
 
 /*FIN TARIFAS*/
-
+.consultarTable{
+  margin-top:3%;
+  
+}
 /*TABLETS*/
 @media (min-width: 769px) {
   .consultarTable{
     width: 90%;
     margin: 0 auto;
+    margin-top:3%;
   }
   .central a {
     font-size: 11pt;
@@ -285,8 +289,8 @@ div.social > ul li img {
 @media (min-width: 940px) {
   .consultarTable{
     width: 95%;
-    margin-top:3%;
     margin: auto;
+    margin-top:3%;
   }
   .central a {
     font-size: 12pt;
@@ -340,8 +344,8 @@ div.social > ul li img {
 @media (min-width: 997px) {
   .consultarTable{
     width: 200%;
-    margin-top:3%;
     margin-left: -35%;
+    margin-top:3%;
   }
   .formu {
     width: 70%;
