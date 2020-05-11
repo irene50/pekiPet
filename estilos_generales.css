@@ -1,0 +1,519 @@
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+body {
+  background-image: url("../../includes/imagenes/fondi2.jpg");
+}
+header {
+  width: 100%;
+  min-height: 20%;
+  background-image: url("../../includes/imagenes/lad.png");
+  background-repeat: repeat;
+  display: inline-block;
+}
+#logo {
+  display: block;
+  margin: auto;
+  width: 50%;
+  /*margin-top: -2.5%;*/
+}
+/*slicebox*/
+.wrapper {
+  position: relative;
+  /*max-width: 60%;*/
+  /*max-width: calc(60% - 50px);*/
+  width: calc(99% - 50px);
+  padding: 0 50px;
+  margin: 0 auto;
+}
+/*menu*/
+.navbar-brand {
+  max-width: 70%;
+}
+.registro a:hover {
+  background-color: darkcyan;
+}
+.registro a {
+  border-color: darkcyan;
+  color: white;
+}
+.dropdown-menu a:hover {
+  color: white;
+  background-color: darkcyan;
+}
+.dropdown-menu a {
+  color: white;
+}
+
+a.dropdown-item {
+  margin-left: 0px !important;
+}
+
+/*otros estilos*/
+.central a {
+  font-size: 10pt;
+  margin: 15px;
+}
+
+.titulo {
+  margin-bottom: -21%;
+  margin: auto;
+  background-color: rgb(50, 56, 58);
+  color: white;
+  width: 84%;
+  margin-top: 4.5%;
+}
+
+/*#servicios{
+    margin-left: 7%;
+    margin-top: 3%;
+}*/
+
+/*datepiker*/
+.ui-widget.ui-widget-content {
+  border: 1px solid #aaaaaa;
+  background: cadetblue;
+  color: #222222;
+}
+
+/*Textareas*/
+textarea.form-control {
+  min-height: 100px;
+  max-height: 150px;
+  overflow-y: scroll;
+}
+
+/*footer*/
+footer {
+  background-color: rgb(50, 56, 58);
+  width: 100%;
+}
+
+/*footer ul{
+    list-style:none;
+    text-align: center; 
+}
+footer ul li{
+    display:inline;
+    padding: 1.5%;
+}*/
+
+.social2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+footer ul li {
+  position: relative;
+  list-style: none;
+  width: 60px;
+  height: 60px;
+  margin: 0 30px;
+  transform: rotate(-30deg) skew(25deg);
+  background: rgb(50, 56, 58);
+}
+
+footer ul li span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  transition: 0.5s;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 30px !important;
+}
+
+footer ul li:hover span:nth-child(5) {
+  transform: translate(40px, -40px);
+  opacity: 1;
+}
+
+footer ul li:hover span:nth-child(4) {
+  transform: translate(30px, -30px);
+  opacity: 0.8;
+}
+
+footer ul li:hover span:nth-child(3) {
+  transform: translate(20px, -20px);
+  opacity: 0.6;
+}
+
+footer ul li:hover span:nth-child(2) {
+  transform: translate(10px, -10px);
+  opacity: 0.4;
+}
+
+footer ul li:hover span:nth-child(1) {
+  transform: translate(0, 0);
+  opacity: 0.2;
+}
+
+footer ul li:nth-child(1) span {
+  background: #3b5999;
+}
+
+footer ul li:nth-child(2) span {
+  background: #e4405f;
+}
+
+footer ul li:nth-child(3) span {
+  background: #55acee;
+}
+
+div#copy div {
+  color: white;
+  text-align: right;
+  align-content: flex-end;
+  font-size: 8pt;
+}
+
+div.social > ul li img {
+  margin-top: -2.5%;
+  height: 33pt;
+  width: 33pt;
+}
+
+#siguenos {
+  color: white;
+  text-align: center;
+  padding: 2%;
+  font-size: 11pt;
+}
+/*TARIFAS*/
+.textoT {
+  width: 45%;
+  margin: 0 auto;
+  margin-top: 15px;
+  font-weight: bolder;
+}
+
+#botonTarifa {
+  background-color: crimson;
+  width: 40%;
+  margin-top: 1.5%;
+  padding: 1%;
+  border-radius: 15px;
+  box-shadow: 0px 0px 0px 2px grey;
+  font-weight: bolder;
+}
+
+.tarifas ul li span {
+  float: right;
+}
+.tarifas ul {
+  list-style: none;
+  padding: 0;
+}
+.back {
+  background: #fff;
+  padding: 2em 1em;
+  margin: 0 1.8em;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  overflow: hidden;
+  -webkit-box-shadow: 0 4px 8px #9f9f9f;
+  box-shadow: 0 4px 8px #9f9f9f;
+}
+
+/*FIN TARIFAS*/
+
+/*TABLETS*/
+@media (min-width: 769px) {
+  .consultarTable{
+    width: 90%;
+    margin: 0 auto;
+  }
+  .central a {
+    font-size: 11pt;
+    margin-left: 15px;
+  }
+  .central {
+    margin-left: 24%;
+  }
+
+  .slides img {
+    max-height: 15em;
+  }
+  #logo {
+    width: 28%;
+  }
+  .formu {
+    width: 80%;
+    margin: auto;
+    margin-top: 2.5%;
+  }
+  div#copy div {
+    font-size: 9pt;
+  }
+  #siguenos {
+    font-size: 12pt;
+  }
+  div.social > ul li img {
+    height: 33pt;
+    width: 33pt;
+  }
+  .back {
+    width: 33em;
+  }
+  div.contactIcon {
+    margin-left: -17px;
+  }
+  #welcome {
+    height: auto;
+  }
+}
+/*PC*/
+@media (min-width: 940px) {
+  .consultarTable{
+    width: 95%;
+    margin-top:3%;
+    margin: auto;
+  }
+  .central a {
+    font-size: 12pt;
+    margin: 15px;
+  }
+  .central {
+    margin-left: 25%;
+  }
+
+  .slides img {
+    max-height: 21em;
+  }
+  #logo {
+    width: 28%;
+  }
+  .formu {
+    width: 70%;
+    margin: auto;
+    margin-top: 2.5%;
+    margin-left: 15%;
+  }
+  .map-container-6 iframe {
+    left: 0;
+    top: 0;
+    height: 68%;
+    width: 70%;
+    position: absolute;
+    margin-left: 15%;
+    margin-top: 2%;
+  }
+  div#copy div {
+    font-size: 10pt;
+  }
+  #siguenos {
+    font-size: 13pt;
+  }
+  div.social > ul li img {
+    height: 34pt;
+    width: 34pt;
+  }
+  .tarifas {
+    display: flex;
+  }
+  .back {
+    width: 21em;
+  }
+  #welcome {
+    height: auto;
+  }
+}
+@media (min-width: 997px) {
+  .consultarTable{
+    width: 200%;
+    margin-top:3%;
+    margin-left: -35%;
+  }
+  .formu {
+    width: 70%;
+    margin-left: 30%;
+    margin-top: 2.5%;
+  }
+  .map-container-6 iframe {
+    left: 0;
+    top: 0;
+    height: 68%;
+    width: 77%;
+    position: absolute;
+    margin-top: 2%;
+    margin-left: 2%;
+  }
+
+  div#copy div {
+    font-size: 11pt;
+  }
+  #siguenos {
+    font-size: 14pt;
+  }
+  div.social > ul li img {
+    height: 35pt;
+    width: 35pt;
+  }
+  .tarifas {
+    display: flex;
+  }
+
+  .formuEntra {
+    margin-left: 24%;
+  }
+  .back {
+    width: 25em;
+  }
+  #welcome {
+    height: auto;
+  }
+}
+@media (min-width: 1000px) {
+  .consultarTable{
+    width: 200%;
+    margin-top:3%;
+    margin-left: -35%;
+  }
+  .central a {
+    font-size: 13pt;
+    margin: 15px;
+  }
+  .central {
+    margin-left: 30%;
+  }
+
+  .slides img {
+    max-width: 45em;
+    max-height: 23.5em;
+  }
+  #logo {
+    width: 28%;
+  }
+  #logo {
+    width: 27%;
+  }
+  .formu {
+    width: 70%;
+    margin-left: 30%;
+  }
+  .map-container-6 iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 78.7%;
+    position: absolute;
+    margin: auto;
+    margin-top: 2.5%;
+  }
+  div.social > ul li img {
+    margin-top: -2.5%;
+    height: 36pt;
+    width: 36pt;
+  }
+  div#copy div {
+    font-size: 12pt;
+  }
+  #siguenos {
+    font-size: 15pt;
+  }
+  .tarifas {
+    display: flex;
+  }
+  div.contactIcon {
+    margin-left: -28px;
+    margin-top: 17px;
+  }
+  .back {
+    width: 28em;
+  }
+  #welcome {
+    height: auto;
+  }
+}
+@media (min-width: 1336px) {
+  .consultarTable{
+    width: 200%;
+    margin-top:3%;
+    margin-left: -35%;
+  }
+  .central a {
+    font-size: 13pt;
+    margin: 15px;
+  }
+  .central {
+    margin-left: 35%;
+  }
+  .wrapper {
+    max-width: 70%;
+  }
+
+  .slides img {
+    max-height: 25em;
+    max-width: 46em;
+    margin-left: 5em;
+  }
+  #pekipet {
+    position: relative;
+  }
+  #logo {
+    width: 28%;
+  }
+  .formu {
+    width: 66%;
+    margin-left: 29.5%;
+  }
+  .map-container-6 iframe {
+    left: 0;
+    top: 0;
+    height: 80%;
+    width: 78.7%;
+    position: absolute;
+    margin: auto;
+    margin-top: 2.5%;
+  }
+  div.social > ul li img {
+    margin-top: -2.5%;
+    height: 38pt;
+    width: 38pt;
+  }
+  div#copy div {
+    font-size: 12pt;
+  }
+  #siguenos {
+    font-size: 16pt;
+  }
+  .tarifas {
+    display: flex;
+  }
+  div.contactIcon {
+    margin-left: -38px;
+    margin-top: 17px;
+  }
+  /*mapa general*/
+  .map-container-6 {
+    overflow: hidden;
+    padding-bottom: 50.25%;
+    position: relative;
+    height: 0;
+  }
+  .back {
+    width: 31em;
+  }
+  #welcome {
+    height: auto;
+  }
+}
