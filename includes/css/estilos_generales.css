@@ -235,9 +235,17 @@ div.social > ul li img {
 }
 
 /*FIN TARIFAS*/
-
+.consultarTable{
+  margin-top:3%;
+  
+}
 /*TABLETS*/
 @media (min-width: 769px) {
+  .consultarTable{
+    width: 90%;
+    margin: 0 auto;
+    margin-top:3%;
+  }
   .central a {
     font-size: 11pt;
     margin-left: 15px;
@@ -279,6 +287,11 @@ div.social > ul li img {
 }
 /*PC*/
 @media (min-width: 940px) {
+  .consultarTable{
+    width: 95%;
+    margin: auto;
+    margin-top:3%;
+  }
   .central a {
     font-size: 12pt;
     margin: 15px;
@@ -329,6 +342,11 @@ div.social > ul li img {
   }
 }
 @media (min-width: 997px) {
+  .consultarTable{
+    width: 200%;
+    margin-left: -35%;
+    margin-top:3%;
+  }
   .formu {
     width: 70%;
     margin-left: 30%;
@@ -369,6 +387,11 @@ div.social > ul li img {
   }
 }
 @media (min-width: 1000px) {
+  .consultarTable{
+    width: 200%;
+    margin-top:3%;
+    margin-left: -35%;
+  }
   .central a {
     font-size: 13pt;
     margin: 15px;
@@ -426,6 +449,11 @@ div.social > ul li img {
   }
 }
 @media (min-width: 1336px) {
+  .consultarTable{
+    width: 200%;
+    margin-top:3%;
+    margin-left: -35%;
+  }
   .central a {
     font-size: 13pt;
     margin: 15px;
