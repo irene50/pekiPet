@@ -29,64 +29,77 @@ include_once 'header.php';
             <br>
 
             <!--Body-->
-            <div class="md-form">
-              <label for="form-nombre">Nombre</label>
-              <input type="text" name="nombre" id="form-nombre" class="form-control" required placeholder="Campo obligatorio">
+            <div class="row">
+              <div class="md-form col-md-6">
+                <label for="form-nombre">Nombre</label>
+                <input type="text" name="nombre" id="form-nombre" class="form-control" required placeholder="Campo obligatorio">
+              </div>
+              <div class="md-form col-md-6">
+                <label for="form-ape1">Primer apellido</label>
+                <input type="text" name="apellido1" id="form-ape1" class="form-control" required placeholder="Campo obligatorio">
+              </div>
             </div>
-            <div class="md-form">
-              <label for="form-ape1">Primer apellido</label>
-              <input type="text" name="apellido1" id="form-ape1" class="form-control" required placeholder="Campo obligatorio">
+            <div class="row">
+              <div class="md-form col-md-6">
+                <label for="form-ape2">Segundo apellido (opcional)</label>
+                <input type="text" name="apellido2" id="form-ape2" class="form-control" placeholder="">
+              </div>
+              <div class="md-form col-md-6">
+                <label for="form-usuario">Usuario</label>
+                <input type="text" name="usuario" id="form-usuario" class="form-control" required placeholder="Campo obligatorio">
+              </div>
             </div>
-            <div class="md-form">
-              <label for="form-ape2">Segundo apellido (opcional)</label>
-              <input type="text" name="apellido2" id="form-ape2" class="form-control" placeholder="">
+            <div class="row">
+              <div class="md-form col-md-6">
+                <label for="form-contrasena">Contraseña</label>
+                <input type="password" name="contrasena" id="form-contrasena" class="form-control" required placeholder="Campo obligatorio">
+              </div>
+              <div class="md-form col-md-6">
+                <label for="form-contrasena2">Confirmar contraseña</label>
+                <input type="password" name="contrasena2" id="form-contrasena2" class="form-control" required placeholder="Campo obligatorio">
+              </div>
             </div>
-            <div class="md-form">
-              <label for="form-usuario">Usuario</label>
-              <input type="text" name="usuario" id="form-usuario" class="form-control" required placeholder="Campo obligatorio">
+            <div class="row">
+              <div class="md-form col-md-6">
+                <label for="form-email">Email</label>
+                <input type="text" name="email" id="form-email" class="form-control" required placeholder="Campo obligatorio">
+              </div>
+              <div class="md-form col-md-6">
+                <label for="form-email2">Confirmar email</label>
+                <input type="text" name="email2" id="form-email2" class="form-control" required placeholder="Campo obligatorio">
+              </div>
             </div>
-            <div class="md-form">
-              <label for="form-contrasena">Contraseña</label>
-              <input type="password" name="contrasena" id="form-contrasena" class="form-control" required placeholder="Campo obligatorio">
+            <div class="row">
+              <div class="md-form col-md-6">
+                <label for="form-tfno">Teléfono (opcional)</label>
+                <input type="text" name="telefono" id="form-tfno" class="form-control" placeholder="">
+              </div>
+              <div class="md-form col-md-6">
+                <label for="form-nombre_mascota">Nombre de tu mascota</label>
+                <input type="text" name="nombre_mascota" id="form-nombre_mascota" class="form-control" required placeholder="Campo obligatorio">
+              </div>
             </div>
-            <div class="md-form">
-              <label for="form-contrasena2">Confirmar contraseña</label>
-              <input type="password" name="contrasena2" id="form-contrasena2" class="form-control" required placeholder="Campo obligatorio">
+            <div class="row">
+              <div class="md-form col-md-6">
+                <label for="form-especie">Especie (perro, gato, pájaro,...)</label>
+                <select name="especie" id="form-especie" class="form-control" required>
+                  <option value="perro">Perro</option>
+                  <option value="gato">Gato</option>
+                  <option value="pajaro">Pájaro</option>
+                  <option value="conejo">Conejo</option>
+                  <option value="otros">Otros</option>
+                </select>
+              </div>
+              <div class="md-form col-md-6">
+                <label for="form-tamano">Tamaño</label>
+                <select name="tamano" id="form-tamano" class="form-control" required>
+                  <option value="pequeno">Pequeño</option>
+                  <option value="mediano">Mediano</option>
+                  <option value="grande">Grande</option>
+                </select>
+              </div>
             </div>
-            <div class="md-form">
-              <label for="form-email">Email</label>
-              <input type="text" name="email" id="form-email" class="form-control" required placeholder="Campo obligatorio">
-            </div>
-            <div class="md-form">
-              <label for="form-email2">Confirmar email</label>
-              <input type="text" name="email2" id="form-email2" class="form-control" required placeholder="Campo obligatorio">
-            </div>
-            <div class="md-form">
-              <label for="form-tfno">Teléfono (opcional)</label>
-              <input type="text" name="telefono" id="form-tfno" class="form-control" placeholder="">
-            </div>
-            <div class="md-form">
-              <label for="form-nombre_mascota">Nombre de tu mascota</label>
-              <input type="text" name="nombre_mascota" id="form-nombre_mascota" class="form-control" required placeholder="Campo obligatorio">
-            </div>
-            <div class="md-form">
-              <label for="form-especie">Especie (perro, gato, pájaro,...)</label>
-              <select name="especie" id="form-especie" class="form-control" required>
-                <option value="perro">Perro</option>
-                <option value="gato">Gato</option>
-                <option value="pajaro">Pájaro</option>
-                <option value="conejo">Conejo</option>
-                <option value="otros">Otros</option>
-              </select>
-            </div>
-            <div class="md-form">
-              <label for="form-tamano">Tamaño</label>
-              <select name="tamano" id="form-tamano" class="form-control" required>
-                <option value="pequeno">Pequeño</option>
-                <option value="mediano">Mediano</option>
-                <option value="grande">Grande</option>
-              </select>
-            </div>
+
             <div class="md-form">
               <br>
               <p align="center">* Los campos con un asterisco son obligatorios</p>
