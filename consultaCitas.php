@@ -3,6 +3,13 @@ include_once 'header.php';
 include_once 'db.php';      
 include_once 'funciones.php';
 $id=$_SESSION['id'];
+
+extract($_GET);
+if(@$idborrar==2){
+    $sql="DELETE FROM cita WHERE idCita=$id";
+    $resborrar=mysqli_query($db,$sql);
+    echo '<script>alert("ELIMINADO")</script> ';
+}
 ?>
 
 <script src="includes/js/validaciones.js"></script>

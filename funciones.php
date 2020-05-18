@@ -268,8 +268,9 @@ function comprobar($n, $ap1, $u, $p, $e, $ap2, $t, $nombre_mascota, $especie, $t
             $fechai = array();
             $fechaf = array();
             $precio = array();
+			$citas = array();
             $fecha = date("Y-m-d H:i:s");
-            $sql = "SELECT cita.idAnimal,tipoServicio,fecha,fecha_fin,precio from cita,animal where cita.idAnimal=animal.idAnimal and id=$id and fecha>'$fecha'";
+            $sql = "SELECT idCita,cita.idAnimal,tipoServicio,fecha,fecha_fin,precio from cita,animal where cita.idAnimal=animal.idAnimal and id=$id and fecha>'$fecha'";
             $result = mysqli_query($db, $sql);
             if ($result) {
               while ($row = mysqli_fetch_assoc($result)) {
@@ -280,6 +281,7 @@ function comprobar($n, $ap1, $u, $p, $e, $ap2, $t, $nombre_mascota, $especie, $t
                 $ff = date("Y-m-d H:i:s", strtotime($row['fecha_fin']));
                 $fechaf[] = $ff;
                 $precio[] = $row['precio'];
+				$citas[] = $row['idCita'];
               }
               foreach ($animal as $mascota) {
                 $resul = mysqli_query($db, "SELECT nombre from animal where idAnimal=$mascota");
@@ -291,7 +293,7 @@ function comprobar($n, $ap1, $u, $p, $e, $ap2, $t, $nombre_mascota, $especie, $t
               echo "<p style='margin-top: 4%; font-size:1.4em; text-align:center; background: rgba(183, 235, 23, 0.50);'><b>Peluquería</b></p>"; //Decorrar esto
               echo "
 	<table class='table table-striped'>
-	<tr><th>Nombre</th> <th>Servicio</th> <th>Fecha Inicio</th> <th>Precio</th></tr>";
+	<tr><th>Nombre</th> <th>Servicio</th> <th>Fecha Inicio</th> <th>Precio</th><th>Eliminar</th></tr>";
               foreach ($mascotas as $l => $valor) {
                 if ($servicios[$l] == 'limpiar') {
                   $se = "Baño";
@@ -299,7 +301,7 @@ function comprobar($n, $ap1, $u, $p, $e, $ap2, $t, $nombre_mascota, $especie, $t
                   $se = "Lavar y cortar";
                 }
                 if ($fechai[$l] > $fechaf[$l]) {
-                  echo "<tr><td>" . $valor . "</td> <td>" . $se . "</td> <td>" . $fechai[$l] . "</td> <td>" . $precio[$l] .  "</td></tr>";
+                  echo "<tr><td>" . $valor . "</td> <td>" . $se . "</td> <td>" . $fechai[$l] . "</td> <td>" . $precio[$l] .  "</td><td><a href='consultaCitas.php?id=".$citas[$l]."&idborrar=2'>Borrar</a></td></tr>";
                 }
               }
               echo "</table>";
@@ -307,7 +309,7 @@ function comprobar($n, $ap1, $u, $p, $e, $ap2, $t, $nombre_mascota, $especie, $t
               echo "<p style='margin-top: 4%; font-size:1.4em; text-align:center; background:rgba(183, 235, 23, 0.50);'><b>Guardería</b></p>"; //Decorrar esto
               echo "
 	<table class='table table-striped'>
-	<tr><th>Nombre</th> <th>Servicio</th> <th>Fecha Inicio</th> <th>Fecha Fin</th> <th>Precio</th></tr>";
+	<tr><th>Nombre</th> <th>Servicio</th> <th>Fecha Inicio</th> <th>Fecha Fin</th> <th>Precio</th><th>Eliminar</th></tr>";
               //var_dump($mascotas);
               foreach ($mascotas as $l => $valor) {
                 if ($precio[$l] >= 200) {
@@ -318,7 +320,7 @@ function comprobar($n, $ap1, $u, $p, $e, $ap2, $t, $nombre_mascota, $especie, $t
                   $i = 2;
                 } else $i = 3;
                 if ($fechai[$l] < $fechaf[$l]) {
-                  echo "<tr><td>" . $valor . "</td> <td>" . $servicio[$i] . "</td> <td>" . $fechai[$l] . "</td> <td>" . $fechaf[$l] . "</td> <td>" . $precio[$l] .  "</td></tr>";
+                  echo "<tr><td>" . $valor . "</td> <td>" . $servicio[$i] . "</td> <td>" . $fechai[$l] . "</td> <td>" . $fechaf[$l] . "</td> <td>" . $precio[$l] .  "</td><td><a href='consultaCitas.php?id=".$citas[$l]."&idborrar=2'>Borrar</a></td></tr>";
                 }
               }
               echo "</table>";
