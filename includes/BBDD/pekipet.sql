@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 04-05-2020 a las 12:57:00
+-- Tiempo de generación: 18-05-2020 a las 14:05:03
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `test`
+-- Base de datos: `pekipet`
 --
 
 -- --------------------------------------------------------
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `cita` (
   `fecha` datetime NOT NULL,
   `fecha_fin` datetime DEFAULT NULL,
   `idPrecio` int(11) NOT NULL,
-  `precio` int(11) NOT NULL,
+  `precio` double DEFAULT NULL,
   `telefono` int(11) NOT NULL,
   `comentario` varchar(400) NOT NULL,
   PRIMARY KEY (`idCita`),
@@ -85,14 +85,13 @@ CREATE TABLE IF NOT EXISTS `cita` (
   KEY `idAnimal_2` (`idAnimal`),
   KEY `idPrecio` (`idPrecio`),
   KEY `idPrecio_2` (`idPrecio`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Volcado de datos para la tabla `cita`
 --
 
 INSERT INTO `cita` (`idCita`, `idAnimal`, `tipoServicio`, `fecha`, `fecha_fin`, `idPrecio`, `precio`, `telefono`, `comentario`) VALUES
-(1, 1, 'limpiar', '2020-05-04 10:00:00', NULL, 41, 8, 617345660, 'Shiro, i love you <3'),
 (2, 1, 'dia', '2020-05-06 11:30:00', '2020-05-06 17:30:00', 42, 200, 664894123, 'No te vayaaaas shiroooo'),
 (3, 1, 'dia', '2020-05-06 15:00:00', '2020-05-06 21:00:00', 42, 200, 664984123, 'jfbjsbjf'),
 (4, 1, 'dia', '2020-05-05 14:00:00', '2020-05-05 20:00:00', 13, 16, 617345660, 'xnjdvhjdxvh'),
@@ -156,39 +155,6 @@ INSERT INTO `cupones` (`codigo`, `valido`, `descuento`) VALUES
 ('81dW-rG65-F7i3', 1, 25),
 ('L1jX-qU65-77zS', 1, 10),
 ('C1xL-gT65-27yB', 1, 20);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `precios`
---
-
-CREATE TABLE IF NOT EXISTS `precios` (
-  `numero` int(11) NOT NULL,
-  `precio` int(11) NOT NULL,
-  PRIMARY KEY (`numero`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `precios`
---
-
-INSERT INTO `precios` (`numero`, `precio`) VALUES
-(11, 300),
-(12, 200),
-(13, 16),
-(21, 6),
-(22, 8),
-(23, 10),
-(24, 12),
-(25, 14),
-(31, 30),
-(32, 35),
-(33, 40),
-(41, 15),
-(42, 20),
-(43, 30),
-(44, 40);
 
 --
 -- Restricciones para tablas volcadas
