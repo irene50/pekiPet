@@ -20,7 +20,7 @@
 				useBootstrap: false,
 				theme: 'dark',
 				icon: 'fa fa-paw',
-				title: 'Cita pedida!',
+				title: 'Contraseña cambiada!',
 				content: 'Se ha cambiado la contraseña correctamente'
 			});
 			</script><?php
@@ -31,7 +31,7 @@
 				useBootstrap: false,
 				theme: 'dark',
 				icon: 'fa fa-paw',
-				title: 'Cita pedida!',
+				title: 'Error contraseña!',
 				content: 'La contraseña es la misma que la anterior'
 			});
 			</script><?php
@@ -43,8 +43,8 @@
 				useBootstrap: false,
 				theme: 'dark',
 				icon: 'fa fa-paw',
-				title: 'Cita pedida!',
-				content: 'No coinciden la nueva contraseña y la de comprobacion'
+				title: 'Error contraseña!',
+				content: 'No coinciden la nueva contraseña y la de comprobación'
 			});
 			</script><?php
 		}
@@ -55,7 +55,7 @@
 				useBootstrap: false,
 				theme: 'dark',
 				icon: 'fa fa-paw',
-				title: 'Cita pedida!',
+				title: 'Error contraseña!',
 				content: 'La contraseña actual no es esa'
 			});
 			</script><?php
